@@ -1,0 +1,19 @@
+# Use postgres/example user/password credentials
+services:
+
+    db:
+        image: postgres
+        container_name: DBWT2_Abalo
+        restart: always
+        # set shared memory limit when using docker-compose
+        shm_size: 128mb
+
+        environment:
+            POSTGRES_USER: dev
+            POSTGRES_PASSWORD: dbwt
+            POSTGRES_DB: abalo
+
+        ports:
+            - 5432:5432
+
+
