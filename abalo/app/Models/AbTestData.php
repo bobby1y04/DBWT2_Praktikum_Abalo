@@ -10,7 +10,7 @@ class AbTestData extends Model
 
     protected $table = 'ab_testdata';
 
-    protected $attributes = ['id', 'ab_testname'];
+    protected $attributes = ['ab_testname'];
 
     public static function readAll() {
         $arrData = [];
