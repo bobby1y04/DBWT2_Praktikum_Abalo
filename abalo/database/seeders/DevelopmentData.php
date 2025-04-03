@@ -13,9 +13,38 @@ class DevelopmentData extends Seeder
      */
     public function run(): void
     {
-        //$this->fillUserTable();
-        //$this->fillArticlesTable();
-        // $this->fillArticleCategoryTable();
+        $this->fillUserTable();
+        $this->fillArticlesTable();
+        $this->fillArticleCategoryTable();
+        $this->fillImages();
+    }
+
+    public function fillImages(): void
+    {
+        $imagePath = public_path('images/articleImages/');
+        $count_articles = DB::table('ab_article')->count();
+
+        for ($i = 1; $i <= $count_articles; $i++) {
+            $filename_jpg = $i . '.jpg';
+            $fullPath_jpg = $imagePath . $filename_jpg;
+            $filename_png = $i . '.png';
+            $fullPath_png = $imagePath . $filename_png;
+
+
+            if (file_exists($fullPath_jpg)) {
+                DB::table('ab_article')
+                    ->where('id', $i)
+                    ->update([
+                        'ab_image' => 'images/articleImages/' . $filename_jpg
+                    ]);
+            } else if (file_exists($fullPath_png)) {
+                DB::table('ab_article')
+                    ->where('id', $i)
+                    ->update([
+                        'ab_image' => 'images/articleImages/' . $filename_png
+                    ]);
+            }
+        }
     }
 
     public function fillUserTable() : void {

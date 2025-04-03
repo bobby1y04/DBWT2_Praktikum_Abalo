@@ -2,29 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AbArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\AbArticle;
-
 
 class ArticleController extends Controller
 {
-
-    public function index() {
+    public function index()
+    {
         return view('articleView');
     }
-    public function search() {
-        $data = [];
-        $articles = new AbArticle();
 
+    public function search(Request $request) // reprÃ¤sentiert eine HTTP Anfrage, z.b.: GET Parameter
+    {
+        $searchWord = $request->input('search');
 
-        if (!isset($_GET['search'])) {
-            $data = $articles->getArticles(0);
-        }
+        $articles = AbArticle::getArticles($searchWord);
 
-
-
-
-        return view('articleView', ['data' => $data]);
+        return view('articleView', ['data' => $articles]);
     }
 }
