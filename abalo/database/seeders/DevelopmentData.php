@@ -15,7 +15,7 @@ class DevelopmentData extends Seeder
     {
         //$this->fillUserTable();
         //$this->fillArticlesTable();
-        $this->fillArticleCategoryTable();
+        // $this->fillArticleCategoryTable();
     }
 
     public function fillUserTable() : void {
