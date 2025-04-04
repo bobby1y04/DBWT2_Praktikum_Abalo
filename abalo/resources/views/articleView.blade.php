@@ -10,7 +10,7 @@
 
 <form method="GET" action="/searchArticle">
     <label for="search">Suchwort</label>
-    <input type="text" id="search" name="search">
+    <input type="text" id="search" name="search" value=<?php echo $_GET['search'] ?? '' ?>>
     <input type="submit" value="suchen">
 </form>
 
