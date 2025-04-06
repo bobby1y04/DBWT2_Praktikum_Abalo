@@ -118,7 +118,9 @@ class DevelopmentData extends Seeder
             DB::table('ab_articlecategory')->insert([
                 'id' => (int) $data[0],
                 'ab_name' => $data[1],
-                'ab_parent' => (strtoupper($data[2]) === 'NULL') ? null : (int)$data[2]
+                'ab_parent' => (strtoupper($data[2]) === 'NULL') ? null : (int)$data[2],
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
         fclose($file);

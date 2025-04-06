@@ -16,8 +16,8 @@ class AbUserMassSeeder extends Seeder
     {
         // Korrektur der Sequenz (id ist SERIAL Primary Key, also unter anderem auch unique)
         DB::select("SELECT setval('ab_user_id_seq', (SELECT MAX(id) FROM ab_user))");
-        // Erzeugt 50 User-Datensätze
-        AbUser::factory()->count(50)->create();
+        // Erzeugt 10000 User-Datensätze
+        AbUser::factory()->count(10000)->create();
 
     }
 }
