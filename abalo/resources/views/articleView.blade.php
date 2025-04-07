@@ -9,7 +9,7 @@
 <h1>Artikel Übersicht</h1>
 
 <form method="GET" action="/articles">
-    <label for="search">Suchwort</label>
+    <label for="search">Suchwort: </label>
     <input type="text" id="search" name="search" value=<?php echo $_GET['search'] ?? '' ?>>
     <input type="submit" value="suchen">
 </form>
