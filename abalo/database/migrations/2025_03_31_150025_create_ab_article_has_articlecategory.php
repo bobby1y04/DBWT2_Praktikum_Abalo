@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ab_article_has_articlecategory', function (Blueprint $table) {
-            $table->id()->unsigned()->comment('Primärschlüssel');
+            $table->id()->comment('Primärschlüssel');
             $table->timestamps();
             $table->unsignedBigInteger('ab_articlecategory_id')->comment('Referenz auf eine Artikelkategorie');
             $table->foreign('ab_articlecategory_id')
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('ab_article_id')
                   ->on('ab_article')
                   ->references('id');
+            $table->unique(['ab_articlecategory_id', 'ab_article_id']); // Tupel eindeutig
         });
     }
 

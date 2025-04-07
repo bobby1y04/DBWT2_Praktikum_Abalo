@@ -91,7 +91,7 @@ class DevelopmentData extends Seeder
             DB::table('ab_article')->insert([
                 'id' => (int) $data[0],
                 'ab_name' => $data[1],
-                'ab_price' => (int) str_replace(',', '.', $data[2]),
+                'ab_price' => (int) str_replace('.', '', $data[2]) * 100, // Preis in Cent
                 'ab_description' => $data[3],
                 'ab_creator_id' => (int) $data[4],
                 'ab_createdate' => \DateTime::createFromFormat('d.m.y H:i', $data[5])?->format('Y-m-d H:i:s'),

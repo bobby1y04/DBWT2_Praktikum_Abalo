@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
-    public function index()
-    {
-        return view('articleView');
-    }
-
     public function search(Request $request) // reprÃ¤sentiert eine HTTP Anfrage, z.b.: GET Parameter
     {
         $searchWord = $request->input('search');

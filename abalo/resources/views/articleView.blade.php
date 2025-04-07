@@ -8,7 +8,7 @@
 <body>
 <h1>Artikel Übersicht</h1>
 
-<form method="GET" action="/searchArticle">
+<form method="GET" action="/articles">
     <label for="search">Suchwort</label>
     <input type="text" id="search" name="search" value=<?php echo $_GET['search'] ?? '' ?>>
     <input type="submit" value="suchen">
@@ -32,7 +32,7 @@
         <tr>
             <td>{{ $article->id }}</td>
             <td>{{ $article->ab_name }}</td>
-            <td>{{ $article->ab_price }}</td>
+            <td>{{ $article->ab_price / 100 }}&euro;</td>
             <td>{{ $article->ab_description }}</td>
             <td>{{ $article->ab_creator_id }}</td>
             <td>{{ $article->ab_createdate }}</td>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->comment('Primärschlüssel');
             $table->timestamps();
             $table->string('ab_name', 80)->unique()->comment('Name');
-            $table->string('ab_password', 200)->unique()->comment('Passwort');
+            $table->string('ab_password', 200)->comment('Passwort');
             $table->string('ab_mail', 200)->unique()->comment('E-Mail-Adresse');
         });
     }

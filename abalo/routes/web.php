@@ -17,8 +17,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/isloggedin', [AuthController::class, 'isloggedin'])->name('haslogin');
 
 // Meilenstein 1, Aufgabe 10
-Route::get('/articles', [ArticleController::class, 'index'])->name('showArticles');
-Route::get('/searchArticle', [ArticleController::class, 'search'])->name('searchArticle');
+Route::get('/articles', [ArticleController::class, 'search'])->name('showArticles');
 
 
 

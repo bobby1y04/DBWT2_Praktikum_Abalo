@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ab_articlecategory', function (Blueprint $table) {
-            $table->id()->unsigned()
-                        ->unique()
-                        ->comment('Primärschlüssel');
+            $table->id()->comment('Primärschlüssel');
             $table->timestamps();
             $table->string('ab_name', 100)->unique()
                                                         ->comment('Name');
