@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array</title>
+</head>
+<body>
+<script>
+    "use strict";
+    let arr = ["erstes", "zweites", 3, 4];
+
+    /*
+
+    a.)
+    // for-Schleife
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+
+    // forEach-Schleife
+    arr.forEach(function(value) {
+        console.log(value);
+    })
+
+    // for-of Schleife
+    for (const el of arr) {
+        console.log(el);
+    }
+
+    */
+
+
+    /*
+
+    b.)
+    arr.push("5"); // Wert (hinten) hinzufügen
+    console.log(arr);
+    arr.pop();  // (letzten) Wert entfernen
+    console.log(arr);
+    arr[1] = 2;
+    console.log(arr);
+
+     */
+
+    // length
+    console.log("Length of the Array: " + arr.length);
+    // sort
+    console.log("Sorted Array: " + arr.sort());
+    // find
+    let found = arr.find(function(el) {
+        return typeof el === "number" && el > 3;
+    });
+    console.log("Filter: " + found);
+    // filter
+    let zahlen = arr.filter(function(e) {
+       return typeof e === "number";
+    });
+    console.log("Gefilterte Zahlen: " + zahlen);
+    // map
+    let stringified = arr.map(function(e) {
+        return e.toString();
+    });
+    console.log("Als Strings: " + stringified);
+    // slice
+    let teilArray = arr.slice(1,3);
+    console.log("Teilarray: " + teilArray);
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+Aufgabe:
+Recherche und Effizienzsteigerung. Entdecken Sie drei neue, für Sie sinnvolle
+Features in der von Ihnen eingesetzten IDE. Benennen und beschreiben Sie jedes
+Feature kurz. Beschreiben Sie, wie Sie dadurch Arbeitszeiten einsparen oder
+Ergebnisse in höherer Qualität erzielen.
+
+Antwort:
+(1) Datenbank-Tools & SQL-Konsole
+    - gute Übersicht über die Datenbank, SQL-Editor bzw. Konsole mit Autocomplete für Tabellen/Spalten, etc.
+    - Schnelleres Testen und Optimieren von Queries, sofortiges Feedback zu Syntax, Highlighting
+
+(2) Integrierter Debugger & Breakpoints
+    - Setzen von Breakpoints und Ausführen von Code-Schritten direkt in der IDE
+    - Beobachten von Variablenwerten und Stack-Traces in Echtzeit
+    - Erleichtert die Fehlersuche und spart somit (enorm viel) Zeit
+
+(3) Git-Integration & Versionskontrolle
+    - Visuelle Darstellung von Branches, Commits und Diff-Ansichten
+    - Einfache Durchführung von Pull, Push, Merge und Rebase direkt in der IDE
+    - Fördert die Zusammenarbeit mit anderen Developern

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kontrollstrukturen</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // if-elseif-else
+        let hasCoffee = true;
+        let tired = false;
+
+        if (hasCoffee && !tired) {
+            console.log("work");
+        } else if (tired) {
+            console.warn("get some rest")
+        } else {
+            console.error("no more coffee!")
+        }
+
+        // switch
+        let coffeeCupsDrunk = 3;
+        let state;
+
+        switch (coffeeCupsDrunk) {
+            case 0: {
+                state = "tired";
+                break;
+            }
+            case 1: {
+                state = "a bit tired";
+                break;
+            }
+            case 2: {
+                state = "still waking up";
+                break;
+            }
+            case 3: {
+                state = "energetic";
+                break;
+            }
+            default: {
+                state = "i don't know";
+            }
+        }
+        console.log("Your state of mind: " + state);
+
+        // for
+        for (let i = 0; i < 5; i++) {
+            console.log("refill coffee");
+        }
+
+        // while
+        let j = 0;
+        while (j < 5) {
+            console.log("drink coffee");
+            j++;
+        }
+
+        // do..while
+        do {
+            console.log("working");
+            j--;
+        } while (j > 0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>funktionalsparameter</title>
+</head>
+<body>
+<script>
+    "use scrict";
+
+    function func(zahl1, zahl2) {
+        return zahl1 * zahl2;
+    }
+    function takeFunction(func) {
+        let result = func(2, 2);
+        console.log(result);
+    }
+
+    takeFunction(func);
+</script>
+</body>
+</html>
