@@ -18,3 +18,13 @@ Antwort:
     - Visuelle Darstellung von Branches, Commits und Diff-Ansichten
     - Einfache Durchführung von Pull, Push, Merge und Rebase direkt in der IDE
     - Fördert die Zusammenarbeit mit anderen Developern
+
+(4) JavaScript-Debugger ermöglicht mir meinen JS Code direkt in
+    PHPStorm zu debuggen, Breakpoints zu setzen und aktuelle Werte von
+    Variablen zu überwachen. Somit kann man Fehler vorbeugen bzw. das Programm
+    testen, was natürlich die Qualität erhöht.
+
+(5) Codevervollständigung ud Quick-Fixes sind in PHPStorm wirklich sehr hilfreich.
+    Dieses Feature ermöglicht es, sehr schnell effizienten Code zu schreiben.
+    Die IDE erkennt in den meisten Fällen, was der Programmierer richtigerweise
+    codieren möchte.
