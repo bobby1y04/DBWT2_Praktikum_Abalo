@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Overlay</title>
+</head>
+<body>
+
+    <script>
+        "use strict";
+        const overlay = document.createElement("div");
+        overlay.innerHTML = "Text Bla Bla Bla Blu Blu Blu";
+        overlay.style.position = "absolute";
+        overlay.style.bottom = "0px";
+        overlay.style.width = "80px";
+        overlay.style.backgroundColor = "lightblue";
+        overlay.style.margin = "0px";
+        overlay.style.right = "0px";
+
+        document.body.appendChild(overlay);
+    </script>
+</body>
+</html>

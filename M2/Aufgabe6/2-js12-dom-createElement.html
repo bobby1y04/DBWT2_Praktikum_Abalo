@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Create Element</title>
+</head>
+<body>
+  <h2>Create Formular with JavaScript</h2>
+  <div id="formular-container"></div>
+  <button id="display-form">Show</button>
+
+  <script>
+    "use strict";
+
+    const form = document.createElement("form");
+    document.getElementById("formular-container").appendChild(form);
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("name", "name");
+    input.setAttribute("placeholder", "Ihr vollständiger Name");
+    form.appendChild(input);
+
+    const select = document.createElement("select");
+    select.setAttribute("name", "geschlecht");
+
+    const option1 = document.createElement("option");
+    option1.setAttribute("value", "m");
+    option1.innerHTML = "männlich";
+
+    const option2 = document.createElement("option");
+    option2.setAttribute("value", "w");
+    option2.innerHTML = "weiblich";
+
+    select.appendChild(option1);
+    select.appendChild(option2);
+    form.appendChild(select);
+
+    document.getElementById("formular-container").style.display = "none";
+    let show = false;
+
+    document.getElementById("display-form").addEventListener("click", function() {
+      show = !show;
+      switch (show) {
+        case true: {
+          document.getElementById("formular-container").style.display = "initial";
+          document.getElementById("display-form").innerHTML = "Hide";
+          break;
+        }
+
+        case false: {
+          document.getElementById("formular-container").style.display = "none";
+          document.getElementById("display-form").innerHTML = "Show";
+          break;
+        }
+        default: console.error("unreachable code was reached!")
+      }
+    });
+
+
+  </script>
+</body>
+</html>

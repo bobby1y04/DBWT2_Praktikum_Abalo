@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function getCookieCounter() {
+            const allCookies = document.cookie.split("; ");
+            for (const cookie of allCookies) {
+                const [name, value] = cookie.split("=");
+                if (name === "counter") {
+                    return parseInt(value);
+                }
+            }
+            return "undefined";
+        }
+
+        let counter = getCookieCounter();
+
+        if (counter === "undefined") {
+            counter = 0;
+        } else {
+            counter += 1;
+        }
+
+        document.cookie = "counter=" + counter;
+        console.log("Counter: " + counter);
+
+
+    </script>
+</body>
+</html>

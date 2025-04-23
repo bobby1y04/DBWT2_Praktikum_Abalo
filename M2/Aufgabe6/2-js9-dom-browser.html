@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Browser</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        let browser = navigator.userAgent;
+        console.log(browser);
+
+        if (browser.indexOf("Chrome") > -1) {
+            console.log("Chrome");
+        } else if (browser.indexOf("Safari") > -1) {
+            console.log("Safari");
+        } else if (browser.indexOf("Firefox") > -1) {
+            console.log("Firefox");
+        } else {
+         console.log("Irgendein anderer Browser");
+        }
+    </script>
+</body>
+</html>

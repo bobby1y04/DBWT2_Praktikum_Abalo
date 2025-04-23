@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objekte</title>
+</head>
+<body>
+
+    <script>
+    "use strict";
+
+    // Objekt mit JSON
+    let car_JSON = {
+        name: "Toyota Aygo",
+        type: "AB1"
+    };
+
+    car_JSON.getName = function() {return this.name};
+    car_JSON.setName = function() {this.name = name};
+    car_JSON.getType = function() {return this.type};
+    car_JSON.setType = function() {this.type = type};
+    car_JSON.writeToConsole = function() {
+        console.log("name="+this.getName()+" type="+this.type);
+    };
+
+
+    // Objekt mit Function
+    function Car_function(name, type) {
+        this.setName(name);
+        this.setType(type);
+
+        this.getName = function() {return this.name;}
+        this.setName = function(name) {this.name = name;}
+        this.getType = function() {return this.type;}
+        this.setType = function(type) {this.type = type;}
+        this.writeToConsole = function() {
+            console.log("name="+this.getName()+" type="+this.type);
+        }
+    }
+
+
+    // Objekt mit Class
+    class Car_class {
+        constructor(name, type) {
+            this.setName(name);
+            this.setType(type);
+        }
+
+        getName() {return this.name;}
+        setName(name) {this.name = name;}
+        getType() {return this.type;}
+        setType(type) {this.type = type;}
+        writeToConsole() {
+            console.log("name="+this.getName()+" type="+this.getType());
+        }
+    }
+
+    let carWithClass = new Car_class("BMW", "Competitive");
+
+    console.log("Car_JSON: ", car_JSON);
+    car_JSON.writeToConsole();
+
+    let carWithFunction = new Car_function("VW Golf", "Street");
+    console.log("Car_function: ", carWithFunction);
+    carWithFunction.writeToConsole();
+
+    console.log("Car_class: ", carWithClass);
+    carWithClass.writeToConsole();
+
+
+
+
+    </script>
+
+</body>
+</html>
