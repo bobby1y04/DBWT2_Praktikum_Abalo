@@ -20,9 +20,9 @@ Route::get('/isloggedin', [AuthController::class, 'isloggedin'])->name('haslogin
 Route::get('/articles', [ArticleController::class, 'search'])->name('showArticles');
 
 // Meilenstein 2, Aufgabe 9
-Route::get('/newarticle', function() {
-    return view('newArticleView');
-})->name('newArticle');
+Route::get('/newarticle', [ArticleController::class, 'create'])->name('createArticle');
+
+Route::post('/articles', [ArticleController::class, 'store'])->name('storeArticle');
 
 
 

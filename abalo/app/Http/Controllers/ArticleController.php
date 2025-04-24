@@ -16,4 +16,12 @@ class ArticleController extends Controller
 
         return view('articleView', ['data' => $articles]);
     }
+
+    public function create(Request $request) {
+        return view('newArticleView');
+    }
+
+    public function store(Request $request) {
+        return view('testView');
+    }
 }
