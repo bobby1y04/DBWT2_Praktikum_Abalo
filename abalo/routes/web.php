@@ -19,5 +19,10 @@ Route::get('/isloggedin', [AuthController::class, 'isloggedin'])->name('haslogin
 // Meilenstein 1, Aufgabe 10
 Route::get('/articles', [ArticleController::class, 'search'])->name('showArticles');
 
+// Meilenstein 2, Aufgabe 9
+Route::get('/newarticle', function() {
+    return view('newArticleView');
+})->name('newArticle');
+
 
 

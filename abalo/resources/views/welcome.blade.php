@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome</title>
+
 </head>
 <body>
 <h1 style="text-align: center;">Welcome</h1>
 
+
+<script src="{{ asset('/js/navigation.js') }}"></script>
+<script src="{{ asset('js/cookiecheck.js') }}" defer></script>
 </body>
 </html>
