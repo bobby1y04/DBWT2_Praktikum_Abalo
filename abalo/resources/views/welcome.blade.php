@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome</title>
+    <title>Abalo - Homepage</title>
 
 </head>
 <body>
-<h1 style="text-align: center;">Welcome</h1>
+<h1 style="text-align: center;">Abalo</h1>
 
 
 <script src="{{ asset('/js/navigation.js') }}"></script>
