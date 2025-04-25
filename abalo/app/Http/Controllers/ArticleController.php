@@ -22,6 +22,19 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request) {
-        return view('testView');
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $description = $request->input('description');
+
+        try {
+            AbArticle::saveArticle($name, $price, $description);
+        } catch (\InvalidArgumentException $e) {
+            return redirect()->back()->withErrors(['validation' => $e->getMessage()])->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['database' => $e->getMessage()])->withInput();
+        }
+        return redirect()->route('showArticles');
+
+
     }
 }

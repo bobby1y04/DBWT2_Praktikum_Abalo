@@ -9,12 +9,25 @@ let buildForm = function() {
     form.method = 'POST';
     form.action = '/articles';
 
+    buildCSRFToken(form);
     buildTextInput(form, 'Artikelname: ', 'name');
     buildTextInput(form, 'Preis: ', 'price', '150px');
     buildTextAreaInput(form, 'Beschreibung:', 'description');
     buildSubmitButton(form);
     formContainer.appendChild(form);
     document.body.appendChild(formContainer);
+}
+
+let buildCSRFToken = function(form) {
+    let token = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute('content');
+
+    let csrfInput = document.createElement('input');
+    csrfInput.type  = 'hidden';
+    csrfInput.name  = '_token';
+    csrfInput.value = token;
+    form.appendChild(csrfInput);
 }
 
 let buildTextInput = function(form, labelName, inputID, width="300px", height="15px", maxLength=80) {
