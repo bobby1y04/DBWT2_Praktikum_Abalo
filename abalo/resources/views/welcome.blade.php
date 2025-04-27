@@ -9,7 +9,7 @@
 <body>
 <h1 style="text-align: center;">Abalo</h1>
 
-
+<script src="{{ asset('/js/backgroundTransition.js') }}"></script>
 <script src="{{ asset('/js/navigation.js') }}"></script>
 <script src="{{ asset('js/cookiecheck.js') }}" defer></script>
 </body>

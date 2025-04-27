@@ -14,7 +14,7 @@ function buildMenu() {
     let navigationContainer = document.createElement("nav");
     navigationContainer.id = "nav-container";
     navigationContainer.style.position = "absolute";
-    navigationContainer.style.backgroundColor = "#6f96c3";
+    // navigationContainer.style.backgroundColor = "#6f96c3";
     navigationContainer.style.width = "20%";
     navigationContainer.style.height = "180px";
     navigationContainer.style.margin = "0";
