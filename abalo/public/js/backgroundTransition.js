@@ -14,7 +14,7 @@ let addTransitionBackground = function() {
         if (j !== 150) j++;
 
         k++;
-        setTimeout(changeColor, 15);
+        setTimeout(changeColor, 1);
     }
 
     changeColor();

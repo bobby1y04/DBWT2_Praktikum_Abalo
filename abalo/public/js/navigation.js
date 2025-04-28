@@ -5,8 +5,14 @@ let unternehmen = {
     options: ["Philosophie", "Karriere"]
 }
 
+let verkaufen = {
+    name: "Verkaufen",
+    options: [],
+    url: '/newarticle'
+}
+
 let navMenu = [
-  "Home", "Kategorien", "Verkaufen", unternehmen
+  "Home", "Kategorien", verkaufen, unternehmen
 ];
 
 
@@ -48,8 +54,14 @@ function buildMenu() {
         }
         unorderedList.appendChild(listElement);
     }
+
     navigationContainer.appendChild(unorderedList);
+
     document.body.appendChild(navigationContainer);
+
+    document.getElementById('Verkaufen').addEventListener('click', function() {
+        window.location.href = '/newarticle';
+    })
 }
 
 function showSubCategory(catName) {

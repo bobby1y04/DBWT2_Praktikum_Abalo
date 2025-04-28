@@ -3,6 +3,10 @@
 let buildForm = function() {
     let formContainer = document.createElement('div');
     formContainer.id = 'form-container';
+    formContainer.style.display = 'flex';
+    formContainer.style.justifyContent = 'center';
+    formContainer.style.alignItems = 'center';
+    formContainer.style.height = '100vh'; // Volle Höhe für vertikale Zentrierung
 
     let form = document.createElement('form');
     form.id = 'form';
@@ -99,5 +103,6 @@ let buildSubmitButton = function(form) {
     });
     form.appendChild(buildButton);
 }
+
 
 buildForm();

@@ -1,22 +1,5 @@
 "use strict";
 
-/*
-function getCookie(cname)
-{
-    let match = document.cookie.match(new RegExp(cname + "=([^;]+)"));
-    return match ? match[1] : null;
-}
-
-
-function setCookie(cname, cvalue, exdays)
-{
-    let d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toDateString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
- */
 
 // Methoden von W3Schools.com
 function getCookie(cname) { // Take the cookiename as parameter (cname)
