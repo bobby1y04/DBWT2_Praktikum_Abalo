@@ -7,8 +7,9 @@
 
 </head>
 <body>
-<h1 style="text-align: center;">Abalo</h1>
+<h1 id="welcome_message" style="text-align: center;">Hallo!</h1>
 
+<script src="{{ asset('/js/periodic.js') }}"></script>
 <script src="{{ asset('/js/backgroundTransition.js') }}"></script>
 <script src="{{ asset('/js/navigation.js') }}"></script>
 <script src="{{ asset('js/cookiecheck.js') }}" defer></script>
