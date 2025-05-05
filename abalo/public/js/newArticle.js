@@ -17,7 +17,7 @@ let buildForm = function() {
     buildTextInput(form, 'Artikelname: ', 'name');
     buildTextInput(form, 'Preis: ', 'price', '150px');
     buildTextAreaInput(form, 'Beschreibung:', 'description');
-    buildSubmitButton(form);
+    buildSubmitButton(form, formContainer);
     formContainer.appendChild(form);
     document.body.appendChild(formContainer);
 }
@@ -81,7 +81,7 @@ let buildTextAreaInput = function(form, labelName, inputID, width="700px", heigh
     form.appendChild(document.createElement('br'));
 }
 
-let buildSubmitButton = function(form) {
+let buildSubmitButton = function(form, formContainer) {
     let buildButton = document.createElement('input');
     buildButton.type = 'button';
     buildButton.id = 'submit-button';
@@ -92,7 +92,7 @@ let buildSubmitButton = function(form) {
         const nameNotEmpty = nameVal !== '';
         const priceGreaterThanZero = !isNaN(priceVal) && priceVal > 0;
         if (nameNotEmpty && priceGreaterThanZero) {
-            document.getElementById('form').submit();
+            sendData(formContainer);
         } else {
             if (!nameNotEmpty) {
                 alert('Artikelname darf nicht leer sein!');
@@ -102,6 +102,50 @@ let buildSubmitButton = function(form) {
         }
     });
     form.appendChild(buildButton);
+}
+
+function sendData(formContainer) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/articles');
+
+    const name = document.getElementById('name').value;
+    const price = document.getElementById('price').value;
+    const description = document.getElementById('description').value;
+
+    let formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description);
+
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    formData.append('_token', token);
+
+    let message = document.createElement('p');
+    message.id = 'form-message';
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+                message.textContent = 'Artikel wurde erfolgreich gespeichert.';
+                message.style.color = 'green';
+            } else {
+                console.error(xhr.statusText);
+                message.textContent = 'Fehler beim Speichern des Artikels. ' + xhr.statusText;
+                message.style.color = 'red';
+            }
+
+            let existingMessage = document.getElementById('form-message');
+            if (existingMessage) {
+                formContainer.replaceChild(message, existingMessage);
+            } else {
+                formContainer.appendChild(message);
+            }
+        }
+    }
+
+    xhr.send(formData);
+
 }
 
 
