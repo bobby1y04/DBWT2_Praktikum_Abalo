@@ -1,77 +1,92 @@
+
 "use strict";
 
-let unternehmen = {
-    name: "Unternehmen",
-    options: ["Philosophie", "Karriere"]
-}
+let menu = {
+    home: {
+        name: "Home",
+        options: [],
+        url: '/articles'
+    },
 
-let verkaufen = {
-    name: "Verkaufen",
-    options: [],
-    url: '/newarticle'
-}
+    kategorien: {
+        name: 'Kategorien',
+        options: [],
+        url: ''
+    },
 
-let navMenu = [
-  "Home", "Kategorien", verkaufen, unternehmen
-];
+    verkaufen: {
+        name: "Verkaufen",
+        options: [],
+        url: '/newarticle'
+    },
 
+    unternehmen: {
+        name: "Unternehmen",
+        options: ["Philosophie", "Karriere"],
+        url: ''
+    },
 
-function buildMenu() {
-    let navigationContainer = document.createElement("nav");
-    navigationContainer.id = "nav-container";
-    navigationContainer.style.position = "absolute";
-    // navigationContainer.style.backgroundColor = "#6f96c3";
-    navigationContainer.style.width = "20%";
-    navigationContainer.style.height = "180px";
-    navigationContainer.style.margin = "0";
-    navigationContainer.style.padding = "0";
-    navigationContainer.style.top = "0";
-    navigationContainer.style.left = "0";
-    navigationContainer.style.fontSize = "20px";
+    auswahl: [],
 
+    build: function () {
+        this.auswahl.push(this.home, this.kategorien, this.verkaufen, this.unternehmen);
 
-    let unorderedList = document.createElement("ul");
-    for (const option of navMenu) {
-        let listElement = document.createElement("li");
-        if (typeof option === "string") {
-            listElement.innerHTML = option;
-        } else {
-            listElement.innerHTML = option['name'];
-            listElement.id = option['name'];
-            listElement.addEventListener('click', function() {
-               showSubCategory(option['name']);
-            });
-            let ulForCategories = document.createElement("ul");
-            ulForCategories.style.listStyleType = "circle";  // Bullet Points
-            ulForCategories.style.paddingLeft = "15px";
-            for (const elementName of option['options']) {
-                let cat = document.createElement("li");
-                cat.innerHTML = elementName + '<br>';
-                ulForCategories.appendChild(cat);
-            }
-            ulForCategories.style.display = 'none';
-            listElement.appendChild(ulForCategories);
+        // Container, der die ganze Navigationsleiste beinhaltet
+        let navigationContainer = document.createElement("nav");
+        navigationContainer.id = "nav-container";
+        navigationContainer.style.position = "absolute";
+        navigationContainer.style.width = "20%";
+        navigationContainer.style.height = "180px";
+        navigationContainer.style.margin = "0";
+        navigationContainer.style.padding = "0";
+        navigationContainer.style.top = "0";
+        navigationContainer.style.left = "0";
+        navigationContainer.style.fontSize = "20px";
+
+        // Aufzählung der einzelnen Auswahlmöglichkeiten
+        let unorderedList = document.createElement("ul");
+        // Erstellung der einzelnen Unterpunkte
+        for (const option of this.auswahl) {
+            let listElement = document.createElement("li");
+                listElement.innerHTML = option.name;
+                listElement.id = option.name;
+                listElement.addEventListener('click', () => {
+                    if (option.url) {   // falls hinter der Option eine URL hinterlegt ist
+                        window.location.href = option.url;
+                    } else {
+                        this.toggleSubcategory(option.name);
+                    }
+                });
+
+                let ulForCategories = document.createElement("ul");
+                ulForCategories.style.listStyleType = "circle";
+                ulForCategories.style.paddingLeft = "15px";
+
+                for (const elementName of option.options) {
+                    let cat = document.createElement("li");
+                    cat.innerHTML = elementName + '<br>';
+                    ulForCategories.appendChild(cat);
+                }
+
+                ulForCategories.style.display = 'none';
+                listElement.appendChild(ulForCategories);
+            unorderedList.appendChild(listElement);
         }
-        unorderedList.appendChild(listElement);
+
+        navigationContainer.appendChild(unorderedList);
+        document.body.appendChild(navigationContainer);
+    },
+
+    toggleSubcategory: function (catName) {
+        let superCategory = document.getElementById(catName);
+        let subList = superCategory.querySelector("ul");
+        // prüfe, den aktuellen Sichtbarkeitsstatus der Unterpunkte
+        let isVisible = subList.style.display !== 'none';
+        // invertiere die Sichtbarkeit
+        subList.style.display = isVisible ? 'none' : 'block';
     }
+};
 
-    navigationContainer.appendChild(unorderedList);
-
-    document.body.appendChild(navigationContainer);
-
-    document.getElementById('Verkaufen').addEventListener('click', function() {
-        window.location.href = '/newarticle';
-    })
-}
-
-function showSubCategory(catName) {
-    let superCategory = document.getElementById(catName);
-    let subList = superCategory.querySelector("ul");
-    let isVisible = subList.style.display !== 'none';
-    subList.style.display = isVisible ? 'none' : 'block';
-}
-
-
-buildMenu();
+menu.build();
 
 
