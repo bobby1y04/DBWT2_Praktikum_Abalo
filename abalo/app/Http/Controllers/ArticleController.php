@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AbArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\error;
 
 class ArticleController extends Controller
 {
@@ -34,7 +35,53 @@ class ArticleController extends Controller
             return redirect()->back()->withErrors(['database' => $e->getMessage()])->withInput();
         }
         return redirect()->route('showArticles');
-
-
     }
+
+
+    // API-methods -----------------------------------------------------------------------------------------------------
+
+    /*
+     * curl -X GET 'http://localhost:8000/api/articles/?search=Artikelname'
+     * -H "Accept: application/json"
+     */
+    public function search_api(Request $request) {
+        $searchWord = $request->input('search');
+        $articles = AbArticle::getArticles($searchWord);
+
+        $response = [];
+        foreach ($articles as $article) {
+            $response[] = [
+                'ID' => $article->id,
+                'Name' => $article->ab_name,
+                'Preis' => $article->ab_price / 100,
+                'Beschreibung' => $article->ab_description
+            ];
+        }
+
+        return response()->json($response, 200, [], JSON_PRETTY_PRINT);
+    }
+
+    /*
+     * curl -X POST 'http://localhost:8000/api/articles/'
+     * -H "Accept: application/json"
+     * -H "Content-Type: application/json"
+     * -d '{"name":"Artikelname","price":999,"description":"Artikelbeschreibung"}'
+     */
+    public function store_api(Request $request) {
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $description = $request->input('description');
+
+        try {
+            AbArticle::saveArticle($name, $price, $description);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json(['error' => $e->getMessage()], 422);    // 422 = Unprocessable Entity
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+        return response()->json(['id' => DB::table('ab_article')->max('id')]);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
 }
