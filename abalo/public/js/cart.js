@@ -37,17 +37,6 @@ function addToCart (id, name, price)
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/shoppingcart');
 
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            console.log('Erfolgreich:', xhr.responseText);
-        } else {
-            console.error('Fehler:', xhr.status, xhr.responseText);
-        }
-    };
-    xhr.onerror = function () {
-        console.error('Request failed');
-    };
-
     let form = new FormData();
     form.append('articleID', id);
     xhr.send(form);
@@ -70,8 +59,19 @@ function updateCart ()
 
         let removeButton = document.createElement('button');
         removeButton.textContent = "-";
-        removeButton.addEventListener('click', function()
+        removeButton.dataset.id = cart[i].id;
+        removeButton.addEventListener('click', function(event)
         {
+
+
+            const articleId = event.target.dataset.id;
+            let shoppingcartid = 1;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('DELETE', `/api/shoppingcart/${shoppingcartid}/articles/${articleId}`);
+            xhr.send();
+
+
             cart.splice(i, 1); // aus dem array an der pos i genau ein item entfernen
             updateCart();
             updatePrice();

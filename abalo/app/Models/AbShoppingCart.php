@@ -39,6 +39,19 @@ class AbShoppingCart extends Model
 
         return response()->json(['success' => "Artikel erfolgreich gespeichert."]);
     }
+
+    public static function removeFromShoppingCartDB($shoppingcartId, $articleId): \Illuminate\Http\JsonResponse {
+        $deleted = DB::table('ab_shoppingcart_item')
+            ->where('ab_shoppingcart_id', $shoppingcartId)
+            ->where('ab_article_id', $articleId)
+            ->delete();
+
+        if ($deleted) {
+            return response()->json(['success' => 'Artikel wurde aus dem Warenkorb entfernt.']);
+        } else {
+            return response()->json(['error' => 'Artikel nicht gefunden oder bereits entfernt.'], 404);
+        }
+    }
 }
 
 

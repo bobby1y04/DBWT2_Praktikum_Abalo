@@ -14,9 +14,9 @@ class AbShoppingCartController extends Controller
         return AbShoppingCart::saveToShoppingCartDB($articleID, 1);
     }
 
-    public function get_cart_api(Request $request)
+    public function remove_from_cart_api($shoppingcartId, $articleId)
     {
-        return response()->json([]);
+        return AbShoppingCart::removeFromShoppingCartDB($shoppingcartId, $articleId);
     }
 
 }

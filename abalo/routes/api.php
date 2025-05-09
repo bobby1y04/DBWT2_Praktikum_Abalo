@@ -13,6 +13,7 @@ Route::get('/articles', [ArticleController::class, 'search_api'])->name('searchA
 
 Route::post('/articles', [ArticleController::class, 'store_api'])->name('storeArticleWithAPI');
 
-Route::get('/shoppingcart', [AbShoppingCartController::class, 'get_cart_api'])
-    ->name('getCartWithAPI');
 Route::post('/shoppingcart', [AbShoppingCartController::class, 'add_to_cart_api'])->name('addToCartWithAPI');
+
+Route::delete('/shoppingcart/{shoppingcartid}/articles/{articleId}', [AbShoppingCartController::class,
+    'remove_from_cart_api'])->name('removeFromCartWithAPI');
