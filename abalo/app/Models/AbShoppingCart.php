@@ -52,6 +52,15 @@ class AbShoppingCart extends Model
             return response()->json(['error' => 'Artikel nicht gefunden oder bereits entfernt.'], 404);
         }
     }
+
+    public static function loadShoppingCartDB($shoppingcartid): \Illuminate\Http\JsonResponse {
+        $items = DB::table('ab_shoppingcart_item')
+            ->join('ab_article', 'ab_article.id', '=', 'ab_shoppingcart_item.ab_article_id')
+            ->where('ab_shoppingcart_id', $shoppingcartid)
+            ->select('ab_article.id as id', 'ab_article.ab_name as name', 'ab_article.ab_price as price')
+            ->get();
+        return response()->json($items);
+    }
 }
 
 
