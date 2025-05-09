@@ -4,6 +4,23 @@ let cart = [];
 
 document.addEventListener('DOMContentLoaded', function()  // DOMContentLoaded = wenn HTML geladen ist
 {
+
+    const shoppingcartid = 1;
+
+    fetch(`/api/shoppingcart/${shoppingcartid}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(item => {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price/100
+                });
+            });
+            updateCart();
+            updatePrice();
+        });
+
     const allButtons = document.querySelectorAll('.add-to-cart');
 
     allButtons.forEach(function(button)

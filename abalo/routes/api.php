@@ -17,3 +17,5 @@ Route::post('/shoppingcart', [AbShoppingCartController::class, 'add_to_cart_api'
 
 Route::delete('/shoppingcart/{shoppingcartid}/articles/{articleId}', [AbShoppingCartController::class,
     'remove_from_cart_api'])->name('removeFromCartWithAPI');
+
+Route::get('/shoppingcart/{shoppingcartid}', [AbShoppingCartController::class, 'get_cart_api']);
