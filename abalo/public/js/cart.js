@@ -34,6 +34,25 @@ function addToCart (id, name, price)
         }
     }
 
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/shoppingcart');
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            console.log('Erfolgreich:', xhr.responseText);
+        } else {
+            console.error('Fehler:', xhr.status, xhr.responseText);
+        }
+    };
+    xhr.onerror = function () {
+        console.error('Request failed');
+    };
+
+    let form = new FormData();
+    form.append('articleID', id);
+    xhr.send(form);
+
+
     cart.push({id, name, price});
 
     updateCart();
