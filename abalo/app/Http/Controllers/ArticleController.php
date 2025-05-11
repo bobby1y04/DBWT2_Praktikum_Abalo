@@ -53,7 +53,7 @@ class ArticleController extends Controller
             $response[] = [
                 'ID' => $article->id,
                 'Name' => $article->ab_name,
-                'Preis' => $article->ab_price / 100,
+                'Preis' => $article->ab_price / 100,    // Preis ist in Cent gespeichert
                 'Beschreibung' => $article->ab_description
             ];
         }
