@@ -10,9 +10,7 @@
 <body>
 <h1 id="welcome_message" style="text-align: center;">Hallo!</h1>
 
-<script src="{{ asset('/js/periodic.js') }}"></script>
-<script src="{{ asset('/js/backgroundTransition.js') }}"></script>
-<script src="{{ asset('/js/navigation.js') }}"></script>
-<script src="{{ asset('js/cookiecheck.js') }}" defer></script>
+
+@vite("resources/js/app.js")
 </body>
 </html>

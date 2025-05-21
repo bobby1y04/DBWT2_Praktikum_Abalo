@@ -18,7 +18,6 @@
     </div>
 @endif
 
-<script src="{{ asset('/js/backgroundTransition.js') }}"></script>
-<script src="{{asset('/js/newArticle.js')}}"></script>
+@vite("resources/js/app.js")
 </body>
 </html>

@@ -54,7 +54,6 @@ function addToCart (id, name, price)
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/shoppingcart');
     xhr.setRequestHeader('Accept', 'application/json');
-    xhr.setRequestHeader('Content-type', 'application/json');
 
     let form = new FormData();
     form.append('articleID', id);

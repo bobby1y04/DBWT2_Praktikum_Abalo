@@ -61,6 +61,6 @@
 
 </table>
 
-<script src="{{ asset('/js/cart.js') }}"></script>
+@vite("resources/js/app.js")
 </body>
 </html>
