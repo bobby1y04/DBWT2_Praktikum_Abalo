@@ -13,10 +13,11 @@ class DevelopmentData extends Seeder
      */
     public function run(): void
     {
-        $this->fillUserTable();
-        $this->fillArticlesTable();
-        $this->fillArticleCategoryTable();
-        $this->fillImages();
+        //$this->fillUserTable();
+        //$this->fillArticlesTable();
+        //$this->fillArticleCategoryTable();
+        //$this->fillImages();
+        $this->fillArticleHasCategory();
     }
 
     public function fillImages(): void
@@ -45,6 +46,30 @@ class DevelopmentData extends Seeder
                     ]);
             }
         }
+    }
+
+    public function fillArticleHasCategory() : void {
+        $path = database_path('seeders/article_has_articlecategory.csv');
+        if (!file_exists($path)) {
+            dd("Datei nicht gefunden: $path");
+        }
+        $file = fopen($path, 'r');
+        $header_line = true;
+        while (($data = fgetcsv($file, 0, ';')) !== false) {
+
+            if ($header_line) {
+                $header_line = false;
+                continue;
+            }
+
+            DB::table('ab_article_has_articlecategory')->insert([
+                'created_at' => now(),
+                'updated_at' => now(),
+                'ab_articlecategory_id' => $data[0],
+                'ab_article_id' => $data[1],
+            ]);
+        }
+        fclose($file);
     }
 
     public function fillUserTable() : void {
