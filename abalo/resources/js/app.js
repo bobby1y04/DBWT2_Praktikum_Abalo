@@ -1,5 +1,4 @@
 import './bootstrap';
-import { sum } from 'mathjs';
 
 
 if (window.location.pathname.startsWith('/articles')) {

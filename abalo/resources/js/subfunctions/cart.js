@@ -1,10 +1,11 @@
 "use strict";
+import { sum, multiply } from 'mathjs';
 
 let cart = [];
 
-document.addEventListener('DOMContentLoaded', function()  // DOMContentLoaded = wenn HTML geladen ist
-{
+initCart();
 
+function initCart() {
     const shoppingcartid = 1;
 
     fetch(`/api/shoppingcart/${shoppingcartid}`)
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function()  // DOMContentLoaded = 
                 cart.push({
                     id: item.id,
                     name: item.name,
-                    price: item.price/100
+                    price: item.price / 100
                 });
             });
             updateCart();
@@ -23,22 +24,15 @@ document.addEventListener('DOMContentLoaded', function()  // DOMContentLoaded = 
 
     const allButtons = document.querySelectorAll('.add-to-cart');
 
-    allButtons.forEach(function(button)
-    {
-        button.addEventListener('click', function()  // wir verwenden anonyme Funktionen, weil sehr sexy und kürzer als function () {}...
-            {
-                // console.log("Button clicked");
-                const id = parseInt(button.dataset.id);
-                const name = button.dataset.name;
-                const price = parseFloat(button.dataset.price);
-
-                // console.log(id, name, price);
-
-                addToCart(id, name, price);
-            }
-        )
-    })
-})
+    allButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const id = parseInt(button.dataset.id);
+            const name = button.dataset.name;
+            const price = parseFloat(button.dataset.price);
+            addToCart(id, name, price);
+        });
+    });
+}
 
 function addToCart (id, name, price)
 {
@@ -104,11 +98,11 @@ function updateCart ()
 }
 function updatePrice ()
 {
-    let sum = 0;
-    for (let i = 0; i < cart.length; i++)
-    {
-        sum += cart[i].price;
-    }
+    let summe = sum(cart.map(item => item.price));
+
     let totalPrice = document.getElementById('total-price');
-    totalPrice.textContent = sum.toFixed(2); // Zahl mit 2 Nachkommastellen into String
+    totalPrice.textContent = summe.toFixed(2); // Zahl mit 2 Nachkommastellen into String
+
+    let mwst = document.getElementById('mwst');
+    mwst.textContent = multiply(summe, 0.19).toFixed(2);
 }
