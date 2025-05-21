@@ -6,6 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
+   return redirect('/welcome');
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
