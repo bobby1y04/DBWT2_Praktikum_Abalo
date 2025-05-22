@@ -12,13 +12,9 @@ if (window.location.pathname.startsWith('/articles')) {
         methods: {
             checkInputLength: function() {
                 let searchField = document.getElementById('search');
-                let searchFieldLength = searchField.value.length;
-                if (searchFieldLength > 2) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('GET', '/articles');
-                    let form = new FormData();
-                    form.append('search', searchField.value);
-                    xhr.send(form);
+                let searchValue = searchField.value;
+                if (searchValue.length > 2) {
+                    window.location.href = `articles?search=${encodeURIComponent(searchValue)}`;
                 }
             }
         }
