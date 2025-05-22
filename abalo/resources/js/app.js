@@ -1,4 +1,5 @@
 import './bootstrap';
+import {createApp} from 'vue';
 
 
 if (window.location.pathname.startsWith('/articles')) {
