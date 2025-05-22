@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>array</title>
-    @vite(['resources/js/app.js'])
+    @vite('resources/js/app.js')
 </head>
 <body>
-@verbatim
-    <table id="app2" border="1">
+<div id="app2">
+    <table border="1">
         <thead>
         <tr>
             <th>Name</th>
@@ -17,12 +17,16 @@
         </thead>
         <tbody>
         <tr v-for="article in articles">
-            <td>{{ article.name }}</td>
-            <td>{{ article.price }}</td>
+            <td>@{{ article.name }}</td>
+            <td>@{{ article.price }}</td>
         </tr>
         </tbody>
     </table>
-@endverbatim
+
+<br>
+    <input type="button" v-on:click="addObject" value="add Radio">
+</div>
+
 
 </body>
 </html>
