@@ -21,7 +21,7 @@ if (window.location.pathname.startsWith('/welcome')) {
 }
 
 // +++ MEILENSTEIN 4, AUFGABE 8 +++
-if (window.location.pathname.startsWith('/4-8-1')) {
+if (window.location.pathname.startsWith('/4-8-')) {
     import ('./M4/task8.js');
 }
 
