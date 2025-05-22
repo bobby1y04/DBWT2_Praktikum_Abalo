@@ -18,7 +18,7 @@ if (window.location.pathname.startsWith('/articles')) {
                 }
             }
         }
-    }).mount('#search-form');
+    }).mount('#search-table');
 }
 
 if (window.location.pathname.startsWith('/newarticle')) {

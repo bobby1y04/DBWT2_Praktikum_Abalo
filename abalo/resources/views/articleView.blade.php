@@ -21,7 +21,8 @@
     <p>Gesamtsumme: <span id="total-price">0.00</span> &euro;</p>
 </div>
 
-<form method="GET" action="/articles" id="search-form">
+<div id="search-table">
+<form method="GET" action="/articles">
     <label for="search">Suchwort</label>
     <input type="text" id="search" name="search" @input="checkInputLength" autofocus value=<?php echo $_GET['search'] ?? '' ?>>
     <input type="submit" value="suchen">
@@ -66,6 +67,7 @@
     </tbody>
 
 </table>
+</div>
 
 @vite("resources/js/app.js")
 </body>
