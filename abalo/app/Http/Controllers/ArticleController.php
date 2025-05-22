@@ -12,8 +12,10 @@ class ArticleController extends Controller
     public function search(Request $request) // reprÃ¤sentiert eine HTTP Anfrage, z.b.: GET Parameter
     {
         $searchWord = $request->input('search');
+        $limit = $request->input('limit');
 
-        $articles = AbArticle::getArticles($searchWord);
+
+        $articles = AbArticle::getArticles($searchWord, $limit);
 
         return view('articleView', ['data' => $articles]);
     }

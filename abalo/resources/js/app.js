@@ -14,7 +14,7 @@ if (window.location.pathname.startsWith('/articles')) {
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
                 if (searchValue.length > 2) {
-                    window.location.href = `articles?search=${encodeURIComponent(searchValue)}`;
+                    window.location.href = `articles?limit=5&search=${encodeURIComponent(searchValue)}`;
                 }
             }
         }

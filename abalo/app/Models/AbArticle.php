@@ -22,13 +22,17 @@ class AbArticle extends Model
         'ab_createdate',
     ];
 
-    public static function getArticles($searchWord)
+    public static function getArticles($searchWord, $limit)
     {
         if ($searchWord == 0 || empty($searchWord))
         {
             return self::all();
         }
-        return self::where('ab_name', 'ILIKE', "%{$searchWord}%")->get(); // ILIKE = Insensitive Like
+        if (isset($limit) && $limit > 0) {
+            return self::where('ab_name', 'ILIKE', "%{$searchWord}%")->limit($limit)->get(); //
+        } else {
+            return self::where('ab_name', 'ILIKE', "%{$searchWord}%")->get(); // ILIKE = Insensitive Like
+        }
     }
 
     public static function saveArticle(string $name, float $priceInEuro, string $description): void
