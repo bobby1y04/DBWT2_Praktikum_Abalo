@@ -28,6 +28,11 @@ Route::get('/newarticle', [ArticleController::class, 'create'])->name('createArt
 
 Route::post('/articles', [ArticleController::class, 'store'])->name('storeArticle');
 
+// Meilenstein 4, Aufgabe 8
+Route::get('/4-8-1', function () {
+    return view('M4.Aufgabe8.4-vue-1-helloworld');
+});
+
 
 
 
