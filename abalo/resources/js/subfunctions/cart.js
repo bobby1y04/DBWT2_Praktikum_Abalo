@@ -98,11 +98,16 @@ function updateCart ()
 }
 function updatePrice ()
 {
-    let summe = sum(cart.map(item => item.price));
+    let subtotal = sum(cart.map(item => item.price));
+    let subtotalPrice = document.getElementById('subtotal-price');
+    subtotalPrice.textContent = subtotal.toFixed(2); // Zahl mit 2 Nachkommastellen into String
+
+    let mwstPrice = multiply(subtotal, 0.19);
+    let mwst =  document.getElementById('mwst');
+    mwst.textContent = mwstPrice.toString();
 
     let totalPrice = document.getElementById('total-price');
-    totalPrice.textContent = summe.toFixed(2); // Zahl mit 2 Nachkommastellen into String
+    totalPrice.textContent = sum(subtotal, mwstPrice).toFixed(2);
 
-    let mwst = document.getElementById('mwst');
-    mwst.textContent = multiply(summe, 0.19).toFixed(2);
+
 }

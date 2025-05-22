@@ -13,8 +13,11 @@
 <div id="cart">
     <h2>Warenkorb</h2>
     <ul id="items"></ul> <!-- hier ul weil wir mit JS li´s einfügen werden -->
-    <p>Gesamtpreis: <span id="total-price">0.00</span> &euro;</p>
+    <hr class="rounded">
+    <p>Zwischensumme: <span id="subtotal-price">0.00</span> &euro;</p>
     <p>19 % MwSt: <span id="mwst">0.00</span> &euro;</p>
+    <hr class="solid short">
+    <p>Gesamtsumme: <span id="total-price">0.00</span> &euro;</p>
 </div>
 
 <form method="GET" action="/articles">

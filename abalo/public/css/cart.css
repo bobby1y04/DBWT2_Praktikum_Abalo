@@ -1,3 +1,4 @@
+/* Shopping Cart */
 #cart
 {
     border: 1px solid black;
@@ -6,9 +7,26 @@
     background-color: #f2f2f2;
 }
 
+/* Default button */
 button
 {
     cursor: pointer;
     font-size: 1.2em;
     padding: 0.2em 0.5em;
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+
+hr.short {
+    width: 200px;
+    margin: auto auto auto 0;
+}
+
+/* Rounded border */
+hr.rounded {
+    border-top: 3px solid #bbb;
+    border-radius: 10px;
 }
