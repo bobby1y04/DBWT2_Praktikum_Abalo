@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Artikel Übersicht</title>
     <link rel="stylesheet" href="{{ asset('/css/cart.css') }}">
+    @vite('resources/js/app.js')
 
 </head>
 <body>
@@ -20,11 +21,12 @@
     <p>Gesamtsumme: <span id="total-price">0.00</span> &euro;</p>
 </div>
 
-<form method="GET" action="/articles">
+<form method="GET" action="/articles" id="search-form">
     <label for="search">Suchwort</label>
-    <input type="text" id="search" name="search" value=<?php echo $_GET['search'] ?? '' ?>>
+    <input type="text" id="search" name="search" @input="checkInputLength" value=<?php echo $_GET['search'] ?? '' ?>>
     <input type="submit" value="suchen">
 </form>
+
 
 <table border="1">
     <thead>

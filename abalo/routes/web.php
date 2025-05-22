@@ -37,6 +37,22 @@ Route::get('/4-8-2', function () {
     return view('M4.Aufgabe8.4-vue2-array');
 });
 
+Route::get('/4-8-3', function () {
+    return view('M4.Aufgabe8.4-vue3-if');
+});
+
+Route::get('/4-8-4', function () {
+    return view('M4.Aufgabe8.4-vue4-input');
+});
+
+Route::get('/4-8-5', function () {
+   return view('M4.Aufgabe8.4-vue5-html');
+});
+
+Route::get('/4-8-6', function () {
+   return view('M4.Aufgabe8.4-vue6-counter');
+});
+
 
 
 
