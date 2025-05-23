@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 100vh;
 }
 
 #submit-button {
@@ -12,3 +13,18 @@
     right: 0;
 }
 
+
+.basic-input {
+    width: 300px;
+    height: 15px;
+}
+
+#price {
+    width: 150px;
+}
+
+#description {
+    width: 700px;
+    height: 300px;
+    resize: none;
+}

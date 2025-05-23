@@ -23,8 +23,9 @@
 
 <div id="search-table">
 <form method="GET" action="/articles">
-    <label for="search">Suchwort</label>
+    <label for="search">Suchwort </label>
     <input type="text" id="search" name="search" @input="checkInputLength" autofocus value=<?php echo $_GET['search'] ?? '' ?>>
+    <span>&nbsp;</span>
     <input type="submit" value="suchen">
 </form>
 
