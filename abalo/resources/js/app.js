@@ -22,7 +22,7 @@ if (window.location.pathname.startsWith('/articles')) {
 }
 
 if (window.location.pathname.startsWith('/newarticle')) {
-    import ('./subfunctions/newArticle.js');
+    // import ('./subfunctions/newArticle.js');
     import ('./subfunctions/backgroundTransition.js');
 
     createApp({
