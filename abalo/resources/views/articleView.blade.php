@@ -43,7 +43,7 @@
         <th>Aktion</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="search-results">
     @if(isset($data))
         @foreach($data as $article)
             <tr>

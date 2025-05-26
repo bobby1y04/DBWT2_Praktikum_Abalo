@@ -47,8 +47,9 @@ class ArticleController extends Controller
      * -H "Accept: application/json"
      */
     public function search_api(Request $request) {
+        $limit = $request->input('limit');
         $searchWord = $request->input('search');
-        $articles = AbArticle::getArticles($searchWord);
+        $articles = AbArticle::getArticles($searchWord, $limit);
 
         $response = [];
         foreach ($articles as $article) {
@@ -56,10 +57,14 @@ class ArticleController extends Controller
                 'ID' => $article->id,
                 'Name' => $article->ab_name,
                 'Preis' => $article->ab_price / 100,    // Preis ist in Cent gespeichert
-                'Beschreibung' => $article->ab_description
+                'Beschreibung' => $article->ab_description,
+                'SellerID' => $article->ab_creator_id,
+                'Erstellungsdatum' => $article->ab_createdate,
+                'Bild' => $article->ab_image
             ];
         }
 
+        // return view('articleView', ['data' => $articles]);
         return response()->json($response, 200, [], JSON_PRETTY_PRINT);
     }
 

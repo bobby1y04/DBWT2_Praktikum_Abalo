@@ -9,7 +9,6 @@ createApp({
 
 createApp({
     data() {
-
         return {
             articles: [
                 {name:"Reifen",price:8290},

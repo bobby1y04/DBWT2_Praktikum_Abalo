@@ -53,6 +53,11 @@ Route::get('/4-8-6', function () {
    return view('M4.Aufgabe8.4-vue6-counter');
 });
 
+// +++ MEILENSTEIN 5, AUFGABE 1 +++
+Route::view('/5-1-1', 'M5.Aufgabe1.5-vue7-component');
+Route::view('/5-1-2', 'M5.Aufgabe1.5-vue8-component-interaction');
+
+
 
 
 

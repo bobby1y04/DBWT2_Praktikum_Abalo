@@ -1,5 +1,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
+import ClickCounter from './M5/Aufgabe1/5-vue7-component.vue';
+import ComponentA from './M5/Aufgabe1/5-vue8-component-interaction-A.vue'
+// import ComponentB from './M5/Aufgabe1/5-vue8-component-interaction-B.vue'
 
 
 
@@ -14,7 +17,38 @@ if (window.location.pathname.startsWith('/articles')) {
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
                 if (searchValue.length > 2) {
-                    window.location.href = `articles?limit=5&search=${encodeURIComponent(searchValue)}`;
+                    // window.location.href = `articles?limit=5&search=${encodeURIComponent(searchValue)}`;
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('GET', '/api/articles?limit=5&search=' + encodeURIComponent(searchValue));
+                    xhr.onreadystatechange = function() {
+                        if (xhr.status === 200 && xhr.readyState === 4) {
+                            let results = JSON.parse(xhr.responseText);
+                            console.log(results);
+                            let tbody = document.getElementById('search-results');
+                            tbody.innerHTML = "";
+
+                            results.forEach(article => {
+                               let row = document.createElement('tr');
+
+                                row.innerHTML = `
+                                <td>${article.ID}</td>
+                                <td>${article.Name}</td>
+                                <td>${(article.Preis / 100).toFixed(2)} €</td>
+                                <td>${article.Beschreibung}</td>
+                                <td>${article.SellerID}</td>
+                                <td>${article.Erstellungsdatum}</td>
+                                <!-- DEFAULT BILD NEHMEN -->
+                                <td><img src="${article.Bild}" alt="Bild" width="150" height="75" /></td>
+                                <td><button class="add-to-cart"
+                                    data-id="${ article.ID }"
+                                    data-name="${ article.Name }"
+                                    data-price="${ article.Preis / 100 }">+</button></td>
+                                `;
+                                tbody.appendChild(row);
+                            });
+                        }
+                    }
+                    xhr.send();
                 }
             }
         }
@@ -104,6 +138,23 @@ if (window.location.pathname.startsWith('/welcome')) {
 // +++ MEILENSTEIN 4, AUFGABE 8 +++
 if (window.location.pathname.startsWith('/4-8-')) {
     import ('./M4/task8.js');
+}
+
+// +++ MEILENSTEIN 5, AUFGABE 1 +++
+if (window.location.pathname.startsWith('/5-1-1')) {
+    createApp({
+        components: {
+            ClickCounter
+        }
+    }).mount('#app');
+}
+
+if (window.location.pathname.startsWith('/5-1-2')) {
+    createApp({
+        components: {
+            ComponentA, ComponentB
+        }
+    }).mount('#components');
 }
 
 

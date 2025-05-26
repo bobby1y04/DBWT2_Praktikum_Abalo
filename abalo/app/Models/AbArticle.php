@@ -54,6 +54,7 @@ class AbArticle extends Model
         $article->ab_createdate  = now();
         $article->created_at = now();
         $article->updated_at = now();
+        $article->ab_image = 'images/articleImages/0-no-image.jpg';
 
         $article->save();
     }
