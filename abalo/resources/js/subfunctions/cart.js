@@ -22,15 +22,14 @@ function initCart() {
             updatePrice();
         });
 
-    const allButtons = document.querySelectorAll('.add-to-cart');
-
-    allButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
+    document.getElementById('search-results').addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('add-to-cart')) {
+            const button = e.target;
             const id = parseInt(button.dataset.id);
             const name = button.dataset.name;
             const price = parseFloat(button.dataset.price);
             addToCart(id, name, price);
-        });
+        }
     });
 }
 

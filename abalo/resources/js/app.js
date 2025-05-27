@@ -37,8 +37,7 @@ if (window.location.pathname.startsWith('/articles')) {
                                 <td>${article.Beschreibung}</td>
                                 <td>${article.SellerID}</td>
                                 <td>${article.Erstellungsdatum}</td>
-                                <!-- DEFAULT BILD NEHMEN -->
-                                <td><img src="${article.Bild}" alt="Bild" width="150" height="75" /></td>
+                                <td><img src="${article.Bild}" alt="Bild" width="150" height="75"></td>
                                 <td><button class="add-to-cart"
                                     data-id="${ article.ID }"
                                     data-name="${ article.Name }"
