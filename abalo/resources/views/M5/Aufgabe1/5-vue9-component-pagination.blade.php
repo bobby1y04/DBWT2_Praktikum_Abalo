@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>component-interaction</title>
+    <title>pagination</title>
     @vite('resources/js/app.js')
 </head>
 <body>
-
-<div id="app" style="background-color: red">
-    <ab-article id="1" title="Schwimmreifen" price="12.99" @clicked-item="articleSelected"></ab-article>
+<div id="app">
+    <paginator></paginator>
 </div>
 
 </body>

@@ -1,8 +1,12 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import ClickCounter from './M5/Aufgabe1/5-vue7-component.vue';
-import ComponentA from './M5/Aufgabe1/5-vue8-component-interaction-A.vue'
-// import ComponentB from './M5/Aufgabe1/5-vue8-component-interaction-B.vue'
+import Paginator from './M5/Aufgabe1/5-vue9-component-pagination.vue'
+import AbArticle from './M5/Aufgabe1/5-vue8-component-interaction.vue'
+import NewSiteHeader from './M5/Aufgabe234/siteheader.vue'
+import NewSiteBody from './M5/Aufgabe234/sitebody.vue'
+import NewSiteFooter from './M5/Aufgabe234/sitefooter.vue'
+import ImpressumMain from './M5/Aufgabe234/impressum.vue'
 
 
 
@@ -149,14 +153,45 @@ if (window.location.pathname.startsWith('/5-1-1')) {
 }
 
 if (window.location.pathname.startsWith('/5-1-2')) {
+
     createApp({
         components: {
-            ComponentA, ComponentB
+            AbArticle
+        },
+        methods: {
+            articleSelected: function(id) {
+                console.log('Elternelement erkennt Klick auf Eintrag id=' + id)
+            }
         }
-    }).mount('#components');
+    }).mount('#app');
 }
 
+if (window.location.pathname.startsWith('/5-1-3')) {
+    createApp({
+        components: {
+            Paginator
+        }
+    }).mount('#app');
+}
 
+// +++ MEILENSTEIN 5, Aufgabe 2
+if (window.location.pathname.startsWith('/newsite')) {
+    createApp({
+        data() {
+          return {
+              whatToShow: 0
+          }
+        },
+        methods: {
+          changeView: function(id) {
+            this.$data.whatToShow = id;
+          }
+        },
+        components: {
+            NewSiteHeader, NewSiteBody, NewSiteFooter, ImpressumMain
+        }
+    }).mount('#app');
+}
 
 
 

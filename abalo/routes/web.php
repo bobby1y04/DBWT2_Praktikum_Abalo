@@ -56,6 +56,10 @@ Route::get('/4-8-6', function () {
 // +++ MEILENSTEIN 5, AUFGABE 1 +++
 Route::view('/5-1-1', 'M5.Aufgabe1.5-vue7-component');
 Route::view('/5-1-2', 'M5.Aufgabe1.5-vue8-component-interaction');
+Route::view('/5-1-3', 'M5.Aufgabe1.5-vue9-component-pagination');
+
+// +++ MEILENSTEIN 5, Aufgabe 2 +++
+Route::view('/newsite', 'newsite')->name('newsite');
 
 
 
