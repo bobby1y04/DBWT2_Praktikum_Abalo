@@ -22,7 +22,8 @@ footer {
     height: 100px;
     background-color: #F4F4F4;
     text-align: center;
+    position: fixed;
     bottom: 0;
-    margin: 0;
+    width: 100%;
 }
 </style>

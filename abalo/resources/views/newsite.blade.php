@@ -8,18 +8,7 @@
 
 </head>
 <body>
-    <div id="app">
-        <new-site-header></new-site-header>
-
-        <template v-if="whatToShow === 0">
-            <new-site-body></new-site-body>
-        </template>
-        <template v-else>
-            <impressum-main></impressum-main>
-        </template>
-
-        <new-site-footer @impressum-clicked="changeView"></new-site-footer>
-    </div>
+<div id="app"></div>
 
 </body>
 </html>

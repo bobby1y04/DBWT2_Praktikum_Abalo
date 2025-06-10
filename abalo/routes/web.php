@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
-   return redirect('/welcome');
+   return redirect('/newsite');
 });
 
 Route::get('/welcome', function () {
