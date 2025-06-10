@@ -5,6 +5,7 @@
             return {
                 home_clicked: false,
                 articles: [],
+                offset: 0,
                 seitenzahl: 1
             }
         },
@@ -25,8 +26,9 @@
                 }
             },
             getArticles: function () {
+                console.log("Offset: " + this.offset);
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', '/api/articles');
+                xhr.open('GET', '/api/articles?limit=5&offset=' + this.offset);
 
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === 4) {
@@ -46,7 +48,7 @@
                 let searchValue = searchField.value;
                 if (searchValue.length > 2) {
                     let xhr = new XMLHttpRequest();
-                    xhr.open('GET', '/api/articles?limit=5&search=' + encodeURIComponent(searchValue));
+                    xhr.open('GET', '/api/articles?&search=' + encodeURIComponent(searchValue));
                     xhr.onreadystatechange = () => {
                         if (xhr.status === 200 && xhr.readyState === 4) {
                             console.log(xhr.responseText);
@@ -57,11 +59,11 @@
                 }
             },
             showArticles: function() {
-                this.seitenzahl = 1;
+                console.log("Offset: " + this.offset);
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', '/api/articles?search=' + encodeURIComponent(searchValue));
+                xhr.open('GET', '/api/articles?offset=' + this.offset + '&limit=5&search=' + encodeURIComponent(searchValue));
                 xhr.onreadystatechange = () => {
                    if (xhr.status === 200 && xhr.readyState === 4) {
                        console.log(xhr.responseText);
@@ -71,6 +73,10 @@
                 };
                 xhr.send();
             },
+            updateOffset(newOffset) {
+                this.offset = newOffset;
+                this.showArticles();
+            }
         },
         mounted() {
             this.getArticles();
@@ -101,10 +107,9 @@
             <label for="search">Suchwort: </label>
             <input type="text" id="search" @input="checkInputLength" autofocus>
             <span>&nbsp;</span>
-            <button @click="showArticles">suchen</button>
+            <button @click="showArticles()">suchen</button>
             <br><br>
-            <paginator :articles="articles" :seitenzahl="seitenzahl" @update-seitenzahl="seitenzahl = $event">
-            </paginator>
+            <paginator :articles="articles" :seitenzahl="seitenzahl" :offset="offset" @update-seitenzahl="seitenzahl = $event" @update-offset="updateOffset" />
 
             <table border="1">
                 <thead>
@@ -122,7 +127,7 @@
                     <tr v-for="article of articles" :key="article.ID">
                         <td>{{ article.ID }}</td>
                         <td>{{ article.Name }}</td>
-                        <td>{{ article.Preis / 100 }} €</td>
+                        <td>{{ article.Preis / 100 }} &euro;</td>
                         <td>{{ article.Beschreibung }}</td>
                         <td>{{ article.SellerID }}</td>
                         <td>{{ article.Erstellungsdatum }}</td>

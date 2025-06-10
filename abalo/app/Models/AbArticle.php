@@ -63,4 +63,8 @@ class AbArticle extends Model
 
         $article->save();
     }
+
+    public static function getAmountOfArticles() {
+        return DB::table('ab_article')->count();
+    }
 }

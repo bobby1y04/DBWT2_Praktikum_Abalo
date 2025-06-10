@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function search(Request $request) // reprÃ¤sentiert eine HTTP Anfrage, z.b.: GET Parameter
     {
         $searchWord = $request->input('search');
-        $limit = $request->input('limit',  5);
+        $limit = $request->input('limit');
         $offset = $request->input('offset');
 
 
@@ -48,7 +48,7 @@ class ArticleController extends Controller
      * -H "Accept: application/json"
      */
     public function search_api(Request $request) {
-        $limit = $request->input('limit', 5);
+        $limit = $request->input('limit');
         $searchWord = $request->input('search');
         $offset = $request->input('offset');
         $articles = AbArticle::getArticles($searchWord, $offset, $limit);
@@ -89,6 +89,11 @@ class ArticleController extends Controller
             return response()->json(['error' => $e->getMessage()]);
         }
         return response()->json(['id' => DB::table('ab_article')->max('id')]);
+    }
+
+    public function get_amount_api(Request $request) {
+        $amount = AbArticle::getAmountOfArticles();
+        return response()->json($amount, 200, [], JSON_PRETTY_PRINT);
     }
 
 
