@@ -12,10 +12,11 @@ class ArticleController extends Controller
     public function search(Request $request) // reprÃ¤sentiert eine HTTP Anfrage, z.b.: GET Parameter
     {
         $searchWord = $request->input('search');
-        $limit = $request->input('limit');
+        $limit = $request->input('limit',  5);
+        $offset = $request->input('offset');
 
 
-        $articles = AbArticle::getArticles($searchWord, $limit);
+        $articles = AbArticle::getArticles($searchWord, $offset, $limit);
 
         return view('articleView', ['data' => $articles]);
     }
@@ -47,9 +48,10 @@ class ArticleController extends Controller
      * -H "Accept: application/json"
      */
     public function search_api(Request $request) {
-        $limit = $request->input('limit');
+        $limit = $request->input('limit', 5);
         $searchWord = $request->input('search');
-        $articles = AbArticle::getArticles($searchWord, $limit);
+        $offset = $request->input('offset');
+        $articles = AbArticle::getArticles($searchWord, $offset, $limit);
 
         $response = [];
         foreach ($articles as $article) {
@@ -88,6 +90,7 @@ class ArticleController extends Controller
         }
         return response()->json(['id' => DB::table('ab_article')->max('id')]);
     }
+
 
     // -----------------------------------------------------------------------------------------------------------------
 

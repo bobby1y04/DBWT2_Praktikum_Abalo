@@ -19,3 +19,4 @@ Route::delete('/shoppingcart/{shoppingcartid}/articles/{articleId}', [AbShopping
     'remove_from_cart_api'])->name('removeFromCartWithAPI');
 
 Route::get('/shoppingcart/{shoppingcartid}', [AbShoppingCartController::class, 'get_cart_api']);
+

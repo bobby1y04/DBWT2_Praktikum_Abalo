@@ -3,10 +3,10 @@ import { createApp } from 'vue';
 import ClickCounter from './M5/Aufgabe1/5-vue7-component.vue';
 import Paginator from './M5/Aufgabe1/5-vue9-component-pagination.vue'
 import AbArticle from './M5/Aufgabe1/5-vue8-component-interaction.vue'
-import NewSiteHeader from './M5/Aufgabe234/siteheader.vue'
-import NewSiteBody from './M5/Aufgabe234/sitebody.vue'
-import NewSiteFooter from './M5/Aufgabe234/sitefooter.vue'
-import ImpressumMain from './M5/Aufgabe234/impressum.vue'
+import NewSiteHeader from './components/siteheader.vue'
+import NewSiteBody from './components/sitebody.vue'
+import NewSiteFooter from './components/sitefooter.vue'
+import ImpressumMain from './components/impressum.vue'
 
 
 

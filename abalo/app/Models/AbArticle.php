@@ -22,11 +22,16 @@ class AbArticle extends Model
         'ab_createdate',
     ];
 
-    public static function getArticles($searchWord, $limit)
+    public static function getArticles($searchWord, $offset, $limit)
     {
         if ($searchWord == 0 || empty($searchWord))
         {
-            return self::all();
+            if (isset($offset)) {
+                return DB::table('ab_article')
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+            }
         }
         if (isset($limit) && $limit > 0) {
             return self::where('ab_name', 'ILIKE', "%{$searchWord}%")->limit($limit)->get(); //

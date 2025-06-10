@@ -1,10 +1,15 @@
 <script>
+    import Paginator from './pagination.vue';
     export default {
         data() {
             return {
                 home_clicked: false,
-                articles: []
+                articles: [],
+                seitenzahl: 1
             }
+        },
+        components: {
+          Paginator
         },
         methods: {
             jumpToLink: function (id) {
@@ -52,6 +57,7 @@
                 }
             },
             showArticles: function() {
+                this.seitenzahl = 1;
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
                 let xhr = new XMLHttpRequest();
@@ -60,15 +66,15 @@
                    if (xhr.status === 200 && xhr.readyState === 4) {
                        console.log(xhr.responseText);
                        this.$data.articles = JSON.parse(xhr.responseText);
+                       console.log("Amount of articles: " + this.$data.articles.length);
                    }
                 };
                 xhr.send();
-
-            }
+            },
         },
         mounted() {
             this.getArticles();
-        }
+        },
     }
 
 </script>
@@ -96,6 +102,9 @@
             <input type="text" id="search" @input="checkInputLength" autofocus>
             <span>&nbsp;</span>
             <button @click="showArticles">suchen</button>
+            <br><br>
+            <paginator :articles="articles" :seitenzahl="seitenzahl" @update-seitenzahl="seitenzahl = $event">
+            </paginator>
 
             <table border="1">
                 <thead>
