@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+</head>
+<body>
+    <ul id="log"></ul>
+
+<script>
+    function show(direction, msg) {
+        let li = document.createElement('li');
+        li.innerHTML = direction + ': ' + msg;
+        document.getElementById('log').append(li);
+    }
+
+    let conn = new WebSocket('ws://localhost:8085/chat');
+    conn.onmessage = function(e) {
+        console.log('Message received: ', e.data);
+        show('Message received: ', e.data);
+    }
+
+
+</script>
+</body>
+</html>

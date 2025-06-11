@@ -6,9 +6,17 @@
  */
 require __DIR__ . '/vendor/autoload.php';
 
+const ID = 1234;
+
+
 \Ratchet\Client\connect('ws://localhost:8085/chat')
     ->then(function($conn) {
-        $conn->send('This is my message to all of you!');
+        $data = [
+            'id' => ID,
+            'msg' => 'Hello World!'
+        ];
+        $message = json_encode($data);
+        $conn->send($message);
 
         $conn->on('message', function($msg) use ($conn) {
             echo "Message received: {$msg}\n";
@@ -18,6 +26,6 @@ require __DIR__ . '/vendor/autoload.php';
             }
             // $conn->close(); // Terminates the socket communication.
         });
-}, function ($e) {
-    echo "Could not connect: {$e->getMessage()}\n";
-});
+    }, function ($e) {
+        echo "Could not connect: {$e->getMessage()}\n";
+    });

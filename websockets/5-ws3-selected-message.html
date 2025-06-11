@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selected Message</title>
+</head>
+<body>
+    <h3>Message to be displayed: </h3>
+    <hr>
+    <p id="message"></p>
+
+<script>
+    function show(msg) {
+        let txt = document.getElementById('message');
+        txt.innerHTML = msg;
+    }
+
+    let conn = new WebSocket('ws://localhost:8085/chat');
+
+    conn.onmessage = function(e) {
+        let data_string = e.data;
+        let obj = JSON.parse(data_string);
+        if (obj.id === 1234) {
+            show(obj.msg);
+        }
+    };
+
+</script>
+
+</body>
+</html>
