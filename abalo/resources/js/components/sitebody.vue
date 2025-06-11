@@ -46,16 +46,30 @@
             checkInputLength: function () {
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
+
                 if (searchValue.length > 2) {
+                    this.offset = 0;
+                    this.seitenzahl = 1;
+
                     let xhr = new XMLHttpRequest();
-                    xhr.open('GET', '/api/articles?&search=' + encodeURIComponent(searchValue));
+                    xhr.open('GET', '/api/articles?offset=0&limit=5&search=' + encodeURIComponent(searchValue));
                     xhr.onreadystatechange = () => {
                         if (xhr.status === 200 && xhr.readyState === 4) {
-                            console.log(xhr.responseText);
-                            this.$data.articles = JSON.parse(xhr.responseText);
+                            this.articles = JSON.parse(xhr.responseText);
                         }
-                    }
+                    };
                     xhr.send();
+
+                    let xhrCount = new XMLHttpRequest();
+                    xhrCount.open('GET', '/api/articles/amount?search=' + encodeURIComponent(searchValue));
+                    xhrCount.onreadystatechange = () => {
+                        if (xhrCount.status === 200 && xhrCount.readyState === 4) {
+                            const count = parseInt(xhrCount.responseText);
+                            this.$refs.paginator.max_seitenanzahl = Math.ceil(count / 5);
+                        }
+                    };
+                    xhrCount.send();
+
                 }
             },
             showArticles: function() {
@@ -63,11 +77,12 @@
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', '/api/articles?offset=' + this.offset + '&limit=5&search=' + encodeURIComponent(searchValue));
+                xhr.open('GET', '/api/articles?limit=5&offset=' + this.offset + '&search=' + encodeURIComponent(searchValue));
                 xhr.onreadystatechange = () => {
                    if (xhr.status === 200 && xhr.readyState === 4) {
                        console.log(xhr.responseText);
                        this.$data.articles = JSON.parse(xhr.responseText);
+                       console.log(this.$data.articles);
                        console.log("Amount of articles: " + this.$data.articles.length);
                    }
                 };
