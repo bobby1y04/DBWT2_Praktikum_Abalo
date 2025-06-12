@@ -1,12 +1,14 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import ClickCounter from './M5/Aufgabe1/5-vue7-component.vue';
-import Paginator from './M5/Aufgabe1/5-vue9-component-pagination.vue'
-import AbArticle from './M5/Aufgabe1/5-vue8-component-interaction.vue'
-import NewSiteHeader from './components/siteheader.vue'
-import NewSiteBody from './components/sitebody.vue'
-import NewSiteFooter from './components/sitefooter.vue'
-import ImpressumMain from './components/impressum.vue'
+import Paginator from './M5/Aufgabe1/5-vue9-component-pagination.vue';
+import AbArticle from './M5/Aufgabe1/5-vue8-component-interaction.vue';
+import NewSiteHeader from './components/siteheader.vue';
+import NewSiteBody from './components/sitebody.vue';
+import NewSiteFooter from './components/sitefooter.vue';
+import ImpressumMain from './components/impressum.vue';
+import Toast, {useToast} from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
 
 
 
@@ -176,16 +178,46 @@ if (window.location.pathname.startsWith('/5-1-3')) {
 
 // +++ MEILENSTEIN 5, Aufgabe 2
 if (window.location.pathname.startsWith('/newsite')) {
-    createApp({
+
+    const app = createApp({
         data() {
           return {
-              whatToShow: 0
+              whatToShow: 0,
+              message: ''
           }
         },
         methods: {
           changeView: function(id) {
             this.$data.whatToShow = id;
           }
+        },
+        mounted() {
+            const conn = new WebSocket('ws://localhost:8085/chat');
+            const toast = useToast();
+
+            conn.onmessage = e => {
+                this.message = e.data;
+
+                if (this.message.includes('In Kürze verbessern wir Abalo')) {
+                   toast.info(this.message, {
+                        timeout: 10000,
+                        closeOnClick: true,
+                        pauseOnHover: true
+                    });
+                }
+            };
+
+            conn.onopen = () => {
+                console.log("WebSocket verbunden.");
+            };
+
+            conn.onerror = (error) => {
+                console.error("WebSocket Fehler:", error);
+            };
+
+            conn.onclose = () => {
+                console.log("WebSocket Verbindung geschlossen.");
+            };
         },
         components: {
             NewSiteHeader, NewSiteBody, NewSiteFooter, ImpressumMain
@@ -203,7 +235,9 @@ if (window.location.pathname.startsWith('/newsite')) {
 
         `
 
-    }).mount('#app');
+    });
+    app.use(Toast);
+    app.mount('#app');
 }
 
 

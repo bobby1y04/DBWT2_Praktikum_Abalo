@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>WebSocket mit Vue</h1>
+        <p>Nachricht: {{message}}</p>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    message: 'Noch keine Nachricht'
+                }
+            },
+            mounted() {
+                const conn = new WebSocket('ws://localhost:8085/chat');
+
+                conn.onmessage = e => {
+                    this.message = e.data;
+                };
+
+                conn.onopen = () => {
+                    console.log("WebSocket verbunden.");
+                };
+
+                conn.onerror = (error) => {
+                    console.error("WebSocket Fehler:", error);
+                };
+
+                conn.onclose = () => {
+                    console.log("WebSocket Verbindung geschlossen.");
+                };
+            }
+        }).mount('#app');
+    </script>
+
+</body>
+</html>
