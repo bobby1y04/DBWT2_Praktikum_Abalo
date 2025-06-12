@@ -21,3 +21,5 @@ Route::delete('/shoppingcart/{shoppingcartid}/articles/{articleId}', [AbShopping
 Route::get('/shoppingcart/{shoppingcartid}', [AbShoppingCartController::class, 'get_cart_api']);
 
 Route::get('/articles/amount', [ArticleController::class, 'get_amount_api']);
+
+Route::post('articles/{id}/sold', [ArticleController::class, 'notify_sold_api']);

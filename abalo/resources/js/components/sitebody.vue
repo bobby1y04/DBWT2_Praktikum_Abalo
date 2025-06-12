@@ -6,7 +6,8 @@
                 home_clicked: false,
                 articles: [],
                 offset: 0,
-                seitenzahl: 1
+                seitenzahl: 1,
+                hoverHome: false
             }
         },
         components: {
@@ -101,34 +102,35 @@
 </script>
 
 <template>
-    <main>
-        <div v-if="home_clicked === false">
-    <ul>
-        <li id="Home" @click="this.$data.home_clicked = true">Home</li>
-        <li>Kategorien</li>
-        <li id="Verkaufen" @click="jumpToLink('Verkaufen')">Verkaufen</li>
-        <li> Unternehmen
-            <ul>
-                <li>Philosophie</li>
-                <li>Karriere</li>
+    <main class="site-body">
+        <div v-if="home_clicked === false" class="menu">
+            <ul class="menu__list">
+                <li id="Home" class="menu__item--simple" @click="this.$data.home_clicked = true">Home</li>
+                <li class="menu__item--simple">Kategorien</li>
+                <li id="Verkaufen" class="menu__item--simple" @click="jumpToLink('Verkaufen')">Verkaufen</li>
+                <li class="menu__item--simple">Unternehmen
+                    <ul class="menu__sublist">
+                        <li class="menu__subitem--simple">Philosophie</li>
+                        <li class="menu__subitem--simple">Karriere</li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
         </div>
-        <div v-else-if="home_clicked === true">
-            <button @click="home_clicked = false">zurück</button>
 
-            <span>&nbsp;</span>
+        <div v-else-if="home_clicked === true" class="article-search">
+            <button class="article-search__back--red" @click="home_clicked = false">zurück</button>
+
             <label for="search">Suchwort: </label>
-            <input type="text" id="search" @input="checkInputLength" autofocus>
-            <span>&nbsp;</span>
-            <button @click="showArticles()">suchen</button>
-            <br><br>
-            <paginator :articles="articles" :seitenzahl="seitenzahl" :offset="offset" @update-seitenzahl="seitenzahl = $event" @update-offset="updateOffset" />
+            <input type="text" id="search" class="article-search__input" @input="checkInputLength" autofocus>
+            <button class="article-search__button--green" @click="showArticles()">suchen</button>
 
-            <table border="1">
+            <paginator :articles="articles" :seitenzahl="seitenzahl" :offset="offset"
+                       @update-seitenzahl="seitenzahl = $event"
+                       @update-offset="updateOffset" />
+
+            <table class="article-list">
                 <thead>
-                <tr>
+                <tr class="article-list__header-row--simple">
                     <th>Artikel-ID</th>
                     <th>Name</th>
                     <th>Preis</th>
@@ -139,18 +141,17 @@
                 </tr>
                 </thead>
                 <tbody id="search-results">
-                    <tr v-for="article of articles" :key="article.ID">
-                        <td>{{ article.ID }}</td>
-                        <td>{{ article.Name }}</td>
-                        <td>{{ article.Preis / 100 }} &euro;</td>
-                        <td>{{ article.Beschreibung }}</td>
-                        <td>{{ article.SellerID }}</td>
-                        <td>{{ article.Erstellungsdatum }}</td>
-                        <td><img :src="article.Bild" alt="Bild" width="100" height="75"></td>
-                    </tr>
+                <tr v-for="article of articles" :key="article.ID" class="article-list__item--simple">
+                    <td>{{ article.ID }}</td>
+                    <td>{{ article.Name }}</td>
+                    <td>{{ article.Preis / 100 }} &euro;</td>
+                    <td>{{ article.Beschreibung }}</td>
+                    <td>{{ article.SellerID }}</td>
+                    <td>{{ article.Erstellungsdatum }}</td>
+                    <td><img :src="article.Bild" alt="Bild" width="100" height="75"></td>
+                </tr>
                 </tbody>
             </table>
-
         </div>
     </main>
 </template>

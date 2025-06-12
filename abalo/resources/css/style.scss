@@ -1,0 +1,98 @@
+@use "sass:math";   // Feature: Module
+
+$primary: #3498db;  // Feature: Variablen
+$secondary: #2ecc71;
+$danger: #e74c3c;
+$light: #ecf0f1;
+$dark: #2c3e50;
+
+$font-size-base: 16px;
+$border-radius: 8px;
+$shadow-color: rgba(0, 0, 0, 0.2);
+
+// Feature: Mixins
+@mixin box-shadow {
+    box-shadow: 0 4px 8px $shadow-color;
+}
+
+// Feature: Verschachtelungen
+.site-body {
+    font-family: Arial, sans-serif;
+    font-size: $font-size-base;
+
+    .menu {
+        background: $primary;
+        padding: 1rem;
+
+        &__list {   // menu__list
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        &__item--simple {   // menu__item ; BEM 1
+            color: white;
+            cursor: pointer;
+
+            &:hover {
+                background: lighten($primary, 10%);
+                border-radius: $border-radius / 2;
+            }
+        }
+
+        &__sublist {    // menu__sublist
+            list-style: circle;
+            margin-left: 1rem;
+        }
+
+        &__subitem--simple {    // BEM 2
+            color: white;
+            font-size: $font-size-base * 0.9;   // Feature: Mathe
+        }
+    }
+
+    .article-search {
+        margin-top: 2rem;
+
+        &__input {
+            padding: 0.5rem;
+            width: 60%;
+        }
+
+        &__button--green {  // BEM 3
+            padding: 0.5rem 1rem;
+            background: $secondary;
+            color: white;
+            @include box-shadow;
+        }
+
+        &__back--red {  // BEM 4
+            background: $danger;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: $border-radius;
+        }
+    }
+
+    .article-list {
+        width: 100%;
+        margin-top: 2rem;
+        border-collapse: collapse;
+
+        &__header-row--simple { // BEM 5
+            background: $light;
+            font-weight: bold;
+        }
+
+        &__item--simple {
+            border-bottom: 1px solid $dark;
+
+            &:hover {
+                background: lighten($light, 10%);
+            }
+        }
+    }
+}

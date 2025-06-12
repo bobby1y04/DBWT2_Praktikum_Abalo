@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
-   return redirect('/newsite');
+   return redirect('newsite');
 });
 
 Route::get('/welcome', function () {
@@ -60,6 +60,7 @@ Route::view('/5-1-3', 'M5.Aufgabe1.5-vue9-component-pagination');
 
 // +++ MEILENSTEIN 5, Aufgabe 2 +++
 Route::view('/newsite', 'newsite')->name('newsite');
+
 
 
 

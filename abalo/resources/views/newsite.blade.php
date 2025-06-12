@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Abalo</title>
     @vite('resources/js/app.js')
+    @vite('resources/css/app.scss')
 
 </head>
 <body>

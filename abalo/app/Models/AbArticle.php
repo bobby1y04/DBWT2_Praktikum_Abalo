@@ -67,4 +67,8 @@ class AbArticle extends Model
     public static function getAmountOfArticles() {
         return DB::table('ab_article')->count();
     }
+
+    public static function getFirstArticleById($id) {
+        return DB::select('SELECT ab_name FROM ab_article WHERE id = ? LIMIT 1', [$id]);
+    }
 }

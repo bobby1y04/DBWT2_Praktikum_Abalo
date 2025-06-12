@@ -7,8 +7,9 @@
 require __DIR__ . '/vendor/autoload.php';
 
 \Ratchet\Client\connect('ws://localhost:8085/chat')
-    ->then(function($conn) {
+    ->then(function($conn)  {
         $conn->send('In Kürze verbessern wir Abalo für Sie! Nach einer kurzen Pause sind wir wieder für Sie da! Versprochen.');
+
 
         $conn->on('message', function($msg) use ($conn) {
             echo "Message received: {$msg}\n";

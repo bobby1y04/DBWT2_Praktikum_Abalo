@@ -205,6 +205,16 @@ if (window.location.pathname.startsWith('/newsite')) {
                         pauseOnHover: true
                     });
                 }
+
+                if (window.location.search.includes('userID=5')) {
+                    if (this.message.includes('Großartig!')) {
+                        toast.info(this.message, {
+                            timeout: 10000,
+                            closeOnClick: true,
+                            pauseOnHover: true
+                        });
+                    }
+                }
             };
 
             conn.onopen = () => {
@@ -226,10 +236,10 @@ if (window.location.pathname.startsWith('/newsite')) {
         `
             <new-site-header></new-site-header>
             <template v-if="whatToShow === 0">
-                <new-site-body/>
+                <new-site-body class="div__menu--simple"></new-site-body>
             </template>
             <template v-else>
-                <impressum-main />
+                <impressum-main></impressum-main>
             </template>
             <new-site-footer @impressum-clicked="changeView"></new-site-footer>
 

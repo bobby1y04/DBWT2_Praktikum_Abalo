@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Artikeleingabe</title>
-    <link rel="stylesheet" href="{{asset('/css/newArticleView.css')}}">
     @vite("resources/js/app.js")
+    @vite("resources/css/app.scss")
 </head>
 <body>
 
@@ -20,7 +20,7 @@
             <label for="description">Beschreibung:</label><br>
             <textarea name="description" id="description"></textarea><br><br>
             <div id="submit-button-container">
-            <input type="button" id="submit-button" value="Speichern" @click="addArticle" @mouseover="zoom" @mouseleave="zoomOut">
+            <input type="button" id="submit-button" class="form__button--green" value="Speichern" @click="addArticle" @mouseover="zoom" @mouseleave="zoomOut">
             </div><br>
         </form>
 
