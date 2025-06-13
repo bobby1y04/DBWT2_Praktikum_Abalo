@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ratchet/pawl": "v0.4.1"
+    }
+}

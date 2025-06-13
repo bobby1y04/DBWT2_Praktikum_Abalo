@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Angebotsevent;
 use App\Models\AbArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Ratchet\Client\WebSocket;
-use function Laravel\Prompts\error;
+
 
 class ArticleController extends Controller
 {
@@ -98,25 +98,36 @@ class ArticleController extends Controller
     }
 
     public function notify_sold_api($id) {
+
         require __DIR__ . '/vendor/autoload.php';
 
         $articles = AbArticle::getFirstArticleById($id);
 
-        $article = $articles[0];
+        if (empty($articles)) {
+            return response()->json(['success' => false, 'message' => 'Artikel nicht gefunden']);
+        }
 
+        $article = $articles[0];
         $message = "Großartig! Ihr Artikel " . $article->ab_name . " wurde erfolgreich verkauft!";
 
+
         \Ratchet\Client\connect('ws://localhost:8085/chat')->then(function($conn) use($message) {
-           $conn->send($message);
-           $conn->close();
+            $conn->send($message);
+            $conn->close();
         })->catch(function ($e) {
             error_log($e->getMessage());
         });
 
 
-        return response()->json(['success' => true]);
+        return response()->json(['message' => $message]);
+}
 
-       // return response()->json(['ID' => $id]);
+    public function notify_offer_api(Request $request, $articleID) {
+
+        // $article = DB::table('ab_article')->find($articleID);
+
+        return response()->json(['success' => true, 200, [], JSON_PRETTY_PRINT]);
+
 
     }
 

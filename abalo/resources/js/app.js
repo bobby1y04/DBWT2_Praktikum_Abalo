@@ -208,7 +208,7 @@ if (window.location.pathname.startsWith('/newsite')) {
 
                 if (window.location.search.includes('userID=5')) {
                     if (this.message.includes('Großartig!')) {
-                        toast.info(this.message, {
+                        toast.success(this.message, {
                             timeout: 10000,
                             closeOnClick: true,
                             pauseOnHover: true

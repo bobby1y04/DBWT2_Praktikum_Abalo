@@ -1,5 +1,8 @@
 <script>
-    import Paginator from './pagination.vue';
+import axios from 'axios';
+import Paginator from './pagination.vue';
+import Toast, {useToast} from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
     export default {
         data() {
             return {
@@ -7,7 +10,8 @@
                 articles: [],
                 offset: 0,
                 seitenzahl: 1,
-                hoverHome: false
+                hoverHome: false,
+                userID: null
             }
         },
         components: {
@@ -47,6 +51,8 @@
             checkInputLength: function () {
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
+                let toast = useToast();
+                toast.info("Hi");
 
                 if (searchValue.length > 2) {
                     this.offset = 0;
@@ -89,12 +95,24 @@
                 };
                 xhr.send();
             },
-            updateOffset(newOffset) {
+            updateOffset: function(newOffset) {
                 this.offset = newOffset;
                 this.showArticles();
+            },
+            setOffer: function(articleID) {
+                axios.post(`/api/articles/${articleID}/offer`)
+                    .then(response => {
+                        console.log(response.data);
+                    }).catch(err => {
+                        console.error(err);
+                    });
             }
+
         },
         mounted() {
+            // Query-Parameter userID aus URL auslesen
+            const params = new URLSearchParams(window.location.search);
+            this.userID = params.get('userID');
             this.getArticles();
         },
     }
@@ -138,6 +156,7 @@
                     <th>Verkäufer-ID</th>
                     <th>Erstellungsdatum</th>
                     <th>Bild</th>
+                    <th>Aktion</th>
                 </tr>
                 </thead>
                 <tbody id="search-results">
@@ -149,6 +168,7 @@
                     <td>{{ article.SellerID }}</td>
                     <td>{{ article.Erstellungsdatum }}</td>
                     <td><img :src="article.Bild" alt="Bild" width="100" height="75"></td>
+                    <td><button v-if="article.SellerID == userID" @click="setOffer(article.ID)">Artikel jetzt als Angebot anbieten</button></td>
                 </tr>
                 </tbody>
             </table>
