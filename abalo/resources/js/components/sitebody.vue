@@ -3,6 +3,15 @@ import axios from 'axios';
 import Paginator from './pagination.vue';
 import Toast, {useToast} from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+/*
+import Echo from 'laravel-echo';
+
+window.Echo = new Echo({
+    broadcaster: 'reverb',
+    host: 'http://localhost:8085',
+});
+*/
+
     export default {
         data() {
             return {
@@ -11,7 +20,9 @@ import 'vue-toastification/dist/index.css';
                 offset: 0,
                 seitenzahl: 1,
                 hoverHome: false,
-                userID: null
+                userID: null,
+                // subscribedChannels: []
+                articleIDs: []
             }
         },
         components: {
@@ -40,6 +51,9 @@ import 'vue-toastification/dist/index.css';
                         if (xhr.status === 200) {
                             console.log(xhr.responseText);
                             this.articles = JSON.parse(xhr.responseText);
+                            this.fillArticleIDs();
+                            this.connectToWS();
+                            // this.setupListeners();  // Channels abonnieren, sobald neue Artikel geladen sind
                         } else {
                             console.error(xhr.statusText);
                         }
@@ -51,8 +65,6 @@ import 'vue-toastification/dist/index.css';
             checkInputLength: function () {
                 let searchField = document.getElementById('search');
                 let searchValue = searchField.value;
-                let toast = useToast();
-                toast.info("Hi");
 
                 if (searchValue.length > 2) {
                     this.offset = 0;
@@ -90,6 +102,8 @@ import 'vue-toastification/dist/index.css';
                        console.log(xhr.responseText);
                        this.$data.articles = JSON.parse(xhr.responseText);
                        console.log(this.$data.articles);
+                       this.fillArticleIDs();
+                       this.connectToWS();
                        console.log("Amount of articles: " + this.$data.articles.length);
                    }
                 };
@@ -100,13 +114,73 @@ import 'vue-toastification/dist/index.css';
                 this.showArticles();
             },
             setOffer: function(articleID) {
+                //console.log("Button clicked");
                 axios.post(`/api/articles/${articleID}/offer`)
                     .then(response => {
-                        console.log(response.data);
+                      console.log("Artikel wurde erfolgreich beworben", response.data);
                     }).catch(err => {
                         console.error(err);
                     });
+            },
+            fillArticleIDs() {
+
+                this.articleIDs = [];
+
+                this.articleIDs = this.articles.map(article => article.ID);
+
+                console.log(this.articleIDs);
+            },
+            connectToWS: function() {
+                const conn = new WebSocket('ws://localhost:8085/chat');
+                conn.onmessage = e => {
+                        let data = JSON.parse(e.data);
+                        console.log(data.id);
+
+                        if (this.articleIDs.includes(Number(data.id))) {
+                            if (Number(this.userID) !== 5) {
+                            console.log("userID = ", this.userID);
+                            alert(data.message);
+                            /*
+                            const toast = useToast();
+                            toast(data.message, {
+                                timeout: 10000,
+                                closeOnClick: true,
+                                pauseOnHover: true
+                            });
+                            */
+                        }
+                    }
+                };
+
+                conn.onopen = () => {
+                    console.log("WebSocket verbunden.");
+                };
+
+                conn.onerror = (error) => {
+                    console.error("WebSocket Fehler:", error);
+                };
+
+                conn.onclose = () => {
+                    console.log("WebSocket Verbindung geschlossen.");
+                };
+            },
+
+            /*
+            setupListeners: function() {
+                this.articles.forEach((article) => {
+                    const channelName = `article.${article.ID}`;
+                    if (!this.subscribedChannels.includes(channelName)) {
+                        console.log("Abonniere Channel: " + channelName);
+                        window.Echo.channel(channelName)
+                            .listen('AbArticleUpdated', (event) => {
+                               let toast = useToast();
+                               toast.info("Test");
+                            });
+                        this.subscribedChannels.push(channelName);
+                    }
+                })
             }
+            */
 
         },
         mounted() {
@@ -114,6 +188,8 @@ import 'vue-toastification/dist/index.css';
             const params = new URLSearchParams(window.location.search);
             this.userID = params.get('userID');
             this.getArticles();
+            // this.setupListeners();
+            // this.connectToWS();
         },
     }
 

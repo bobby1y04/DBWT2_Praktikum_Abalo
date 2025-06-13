@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Angebotsevent;
+// use App\Events\AbArticleUpdated;
 use App\Models\AbArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -124,11 +124,36 @@ class ArticleController extends Controller
 
     public function notify_offer_api(Request $request, $articleID) {
 
-        // $article = DB::table('ab_article')->find($articleID);
-
-        return response()->json(['success' => true, 200, [], JSON_PRETTY_PRINT]);
+        require __DIR__ . '/vendor/autoload.php';
 
 
+        $article = AbArticle::find($articleID);
+
+        if (!$article) {
+            return response()->json(['success' => false, 'message' => 'Artikel nicht gefunden'], 404);
+        }
+
+        $articleName = $article[0]->ab_name;
+        $message = "Der Artikel {$articleName} wird nun günstiger angeboten. Greifen Sie schnell zu.";
+
+        $data = [
+            'id' => $articleID,
+            'message' => $message
+        ];
+
+
+        \Ratchet\Client\connect('ws://localhost:8085/chat')
+            ->then(function($conn) use ($data) {
+                $conn->send(json_encode($data));
+                $conn->close();
+            })
+            ->catch(function ($e) {
+                error_log($e->getMessage());
+            });
+
+        // broadcast(new AbArticleUpdated($articleID, $articleName));
+
+        return response()->json(['success' => true]);
     }
 
 

@@ -24,4 +24,4 @@ Route::get('/articles/amount', [ArticleController::class, 'get_amount_api']);
 
 Route::post('articles/{id}/sold', [ArticleController::class, 'notify_sold_api']);
 
-Route::post('articles/{id}/offer', [ArticleController::class, 'notify_offer_api']);
+Route::post('articles/{articleID}/offer', [ArticleController::class, 'notify_offer_api']);
