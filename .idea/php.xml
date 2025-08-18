@@ -127,6 +127,60 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/composer" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/ratchet/pawl" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/ratchet/rfc6455" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/abalo/app/Http/Controllers/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/websockets/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/websockets/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/websockets/vendor/ratchet/pawl" />
+      <path value="$PROJECT_DIR$/websockets/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/websockets/vendor/ratchet/rfc6455" />
+      <path value="$PROJECT_DIR$/websockets/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/websockets/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/websockets/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/websockets/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/websockets/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/websockets/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/websockets/vendor/cboden/ratchet" />
+      <path value="$PROJECT_DIR$/websockets/vendor/composer" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/websockets/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/websockets/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/composer" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/ratchet/pawl" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/ratchet/rfc6455" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/abalo/websockets/vendor/cboden/ratchet" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
@@ -138,7 +192,6 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/abalo/phpunit.xml" custom_loader_path="$PROJECT_DIR$/abalo/vendor/autoload.php" use_configuration_file="true" />
-      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
     </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">

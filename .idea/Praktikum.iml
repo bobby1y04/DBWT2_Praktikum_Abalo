@@ -5,10 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/abalo/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/abalo/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/abalo/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/abalo/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/abalo/tests" isTestSource="true" packagePrefix="Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/abalo/tests/Feature" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/abalo/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/abalo/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/abalo/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/abalo/vendor/composer" />
@@ -126,6 +124,60 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/deprecation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/abalo/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/abalo/storage/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/evenement/evenement" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/ratchet/pawl" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/ratchet/rfc6455" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/app/Http/Controllers/vendor/react/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/cboden/ratchet" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/evenement/evenement" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/ratchet/pawl" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/ratchet/rfc6455" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/react/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/abalo/websockets/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/cboden/ratchet" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/evenement/evenement" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/ratchet/pawl" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/ratchet/rfc6455" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/react/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/websockets/vendor/symfony/routing" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
